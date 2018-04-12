@@ -20,9 +20,21 @@ Image_List = cell(imageNum, 1);
 
 for i = 1: imageNum
     hostImage = imageList(i).name;
-    index = strfind(hostImage, '.');                        %index is the same is image name
+    index = strfind(hostImage, '.');                        %index is the digit+1 of image name. e.g 100=>4; 10=>3
     imageName = hostImage(1:index - 1);
-    fprintf('PSNR without DES: %d\n', PSNR1);
+    fprintf('===========================================\n');
+    fprintf('index: %d\n',index);
+    fprintf('imageNum: %d\n',imageNum);
+    fprintf('i: %d\n',i);
+    fprintf('hostImage: %d\n',hostImage);
+%         for ii = 1: size(imageList)
+%             fprintf('hostImage: %d\n',imageList(ii).name);
+%             fprintf('imageName: %d\n',imageList(ii).name(1:3));
+%             fprintf('index ii: %d\n',ii);
+%             fprintf('---------------------------------------\n');
+%         end
+    fprintf('imageName: %d\n',imageName);
+    fprintf('===========================================\n');
     Image_List{i} = imageName;
     hostImage = strcat('grayscale photo\', hostImage);      %hostImage = path
     [hieght, width] = LSB_embed(hostImage, 'watermark.txt', strcat('LSB photo\', strcat(imageName, '.png')));

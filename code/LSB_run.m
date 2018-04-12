@@ -20,15 +20,8 @@ Image_List = cell(imageNum, 1);
 
 for i = 1: imageNum
     hostImage = imageList(i).name;
-    index = strfind(hostImage, '.');                        %index is the same is image name
-    imageName = hostImage(1:index - 1);
-    fprintf('===========================================\n');
-    fprintf('imageNum: %d\n',imageNum);
-    fprintf('i: %d\n',i);
-    fprintf('hostImage: %d\n',hostImage);
-    fprintf('index: %d\n',index);
-    fprintf('imageName: %d\n',imageName);
-    fprintf('===========================================\n');
+    index = strfind(hostImage, '.');                        %index is the digit+1 of image name. e.g 100=>4; 10=>3. First (index-1) stand for image name, the last stand for dot ".".
+    imageName = hostImage(1:index - 1);                     %image name is an char list, 1 to index-1 is the image name, exit in ASCII stand. e.g 8=>56; 2=>50
     Image_List{i} = imageName;
     hostImage = strcat('grayscale photo\', hostImage);      %hostImage = path
     [hieght, width] = LSB_embed(hostImage, 'watermark.txt', strcat('LSB photo\', strcat(imageName, '.png')));
