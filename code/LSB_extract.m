@@ -17,7 +17,7 @@ W = size(watermarkedImg, 2);
 % extracting process
 r = 1; % row
 c = 1; % column
-binWatermark = zeros(H_binWatermark, W_binWatermark);
+binWatermark = zeros(H_binWatermark, W_binWatermark);%zeros: build all zero array matrix
 for i = 1:H_binWatermark
     for j = 1 :W_binWatermark
         binWatermark(i, j) = bitget(watermarkedImg(r, c), 1);

@@ -67,13 +67,13 @@ for i = 1:H_binWatermark
             pixel = double(watermarkedImg(r, c)); % the gray level of current pixel
             if c == W
                 next_pixel = double(watermarkedImg(r + 1, 1));
-                if mod(pixel, 2) == 1 && next_pixel == pixel + 1%if LSB current pixel=1 and gray level is the same for two contiguous pixel
+                if mod(pixel, 2) == 1 && next_pixel == pixel + 1%if LSB current pixel=1 and 
                     if j == W_binWatermark
                         next_n = str2double(binWatermark(i + 1, 1));
                     else
                         next_n = str2double(binWatermark(i, j + 1));
                     end
-                    if next_n ~= mod(next_pixel, 2)%if message bit != LSB(pixel)
+                    if next_n ~= mod(next_pixel, 2)
                         watermarkedImg(r, c) = next_pixel;
                         watermarkedImg(r + 1, 1) = pixel;
                         pair = true;
