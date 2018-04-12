@@ -49,8 +49,9 @@ for i = 1:H_binWatermark
         else
             n1 = n1 + 1;
         end
-        
-        if n ~= bitget(watermarkedImg(r, c), 1)%~= => inverse of true or false, 1 represent the postition of LSB
+        fprintf('number of 0: %d\n', n0);
+        fprintf('--------------------------\n');
+        if n ~= bitget(watermarkedImg(r, c), 1)%~= => inverse of true or false
             watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);%sets the bit at position bit(1) to the value (n)
         end
     
@@ -64,8 +65,8 @@ for i = 1:H_binWatermark
     end
 end
 
-% fprintf('number of 0: %d\n', n0);
-% fprintf('number of 1: %d\n', n1);
+fprintf('number of 0: %d\n', n0);
+fprintf('number of 1: %d\n', n1);
 % output the watermarked image
 imwrite(watermarkedImg, watermarkedImgFileName, 'png');
 
