@@ -76,7 +76,7 @@ for i = 1:H_binWatermark
                     else
                         next_n = str2double(binWatermark(i, j + 1));
                     end
-                    if next_n ~= mod(next_pixel, 2)%if message bit != LSB(pixel)
+                    if next_n ~= mod(next_pixel, 2)%if message bit != LSB(pixel), exchange two pixels
                         watermarkedImg(r, c) = next_pixel;
                         watermarkedImg(r + 1, 1) = pixel;
                         pair = true;
