@@ -65,9 +65,12 @@ for i = 1:H_binWatermark
              end
             pair = false;
             pixel = double(watermarkedImg(r, c)); % the gray level of current pixel
+            
+            %if current column is the last one
             if c == W
                 next_pixel = double(watermarkedImg(r + 1, 1));
-                if mod(pixel, 2) == 1 && next_pixel == pixel + 1%if LSB current pixel=1 and gray level is the same for two contiguous pixel
+                if mod(pixel, 2) == 1 && next_pixel == pixel + 1%if LSB current pixel=1 and the next pixel of gray level is 1 bit larger than current
+                    %check if is last column or not
                     if j == W_binWatermark
                         next_n = str2double(binWatermark(i + 1, 1));
                     else
@@ -78,7 +81,7 @@ for i = 1:H_binWatermark
                         watermarkedImg(r + 1, 1) = pixel;
                         pair = true;
                     end
-                elseif mod(pixel, 2) == 0 && next_pixel == pixel - 1
+                elseif mod(pixel, 2) == 0 && next_pixel == pixel - 1%the second case, 
                     if j == W_binWatermark
                         next_n = str2double(binWatermark(i + 1, 1));
                     else
@@ -90,6 +93,8 @@ for i = 1:H_binWatermark
                         pair = true;
                     end
                 end
+                
+            %if normal case
             else
                 next_pixel = double(watermarkedImg(r, c + 1));
                 if mod(pixel, 2) == 1 && next_pixel == pixel + 1
