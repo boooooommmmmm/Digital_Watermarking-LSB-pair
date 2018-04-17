@@ -81,7 +81,8 @@ for i = 1:H_binWatermark
                         watermarkedImg(r + 1, 1) = pixel;
                         pair = true;
                     end
-                end                
+                end
+                
             %if normal case
             else
                 next_pixel = double(watermarkedImg(r, c + 1));
@@ -120,9 +121,9 @@ for i = 1:H_binWatermark
     end
 end
 
-fprintf('number of 0: %d\n', n0);
-fprintf('number of 1: %d\n', n1);
-fprintf('number of k: %d\n', k);
+% fprintf('number of 0: %d\n', n0);
+% fprintf('number of 1: %d\n', n1);
+% fprintf('number of k: %d\n', k);
 
 % output the watermarked image
 imwrite(watermarkedImg, watermarkedImgFileName, 'png');

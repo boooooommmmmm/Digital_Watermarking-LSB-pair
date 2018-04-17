@@ -43,12 +43,13 @@ for i = 1:H_binWatermark
     for j = 1:W_binWatermark
         % host image LSB replaced by watermark bit if they are different
         n = str2double(binWatermark(i, j)); % get the bit from watermark
+        
         % count the  number of 0 and 1
-        if n == 0
-            n0 = n0 + 1;
-        else
-            n1 = n1 + 1;
-        end
+%         if n == 0
+%             n0 = n0 + 1;
+%         else
+%             n1 = n1 + 1;
+%         end
         
         if n ~= bitget(watermarkedImg(r, c), 1)%~= => inverse of true or false, 1 represent the postition of LSB
             watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);%sets the bit at position bit(1) to the value (n)

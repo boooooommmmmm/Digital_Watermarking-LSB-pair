@@ -128,6 +128,8 @@ for i = 1:H_binWatermark
                     k = k + 1;
                 end
                 flag = true;
+                
+            % if not fit any suitation, do regular LSB watermarking
             else
                 watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);
             end
@@ -143,9 +145,9 @@ for i = 1:H_binWatermark
     end
 end
 
-fprintf('number of 0: %d\n', n0);
-fprintf('number of 1: %d\n', n1);
-fprintf('number of k: %d\n', k);
+% fprintf('number of 0: %d\n', n0);
+% fprintf('number of 1: %d\n', n1);
+% fprintf('number of k: %d\n', k);
 
 % output the watermarked image
 imwrite(watermarkedImg, watermarkedImgFileName, 'png');
