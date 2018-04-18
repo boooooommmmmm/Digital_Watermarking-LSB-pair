@@ -1,4 +1,4 @@
-function [ H_binWatermark, W_binWatermark ] = LSB_pair(hostFileName, watermarkFileName, watermarkedImgFileName )
+function [ H_binWatermark, W_binWatermark ] = LSB_pair_new(hostFileName, watermarkFileName, watermarkedImgFileName )
 %LSB_PIAR Summary of this function goes here
 
 % read host image
