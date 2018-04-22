@@ -51,14 +51,14 @@ for i = 1: imageNum
     Hm_pair = Hae(hostImg, watermarkedImg_pair);
     Hm_pair_ultra = Hae(hostImg, watermarkedImg_pair_ultra);
 
-    % Hae
-    Hm1 = abs(Hm);
-    Hm_pair = abs(Hm_pair);
-    Hm_pair_ultra = abs(Hm_pair_ultra);
-
-    Hae_List_LSB(i) = sum(Hm1);
-    Hae_List_LSB_pair(i) = sum(Hm_pair);
-    Hae_List_LSB_pair_ultra(i) = sum(Hm_pair_ultra);
+%     % Hae
+%     Hm1 = abs(Hm);
+%     Hm_pair = abs(Hm_pair);
+%     Hm_pair_ultra = abs(Hm_pair_ultra);
+% 
+%     Hae_List_LSB(i) = sum(Hm1);
+%     Hae_List_LSB_pair(i) = sum(Hm_pair);
+%     Hae_List_LSB_pair_ultra(i) = sum(Hm_pair_ultra);
     
     fprintf('Processing... (%d of %d) has been done...\n', i,imageNum);
 end
@@ -72,9 +72,9 @@ xlswrite('PSNR.xlsx', Image_List, 'Sheet1', 'A2');
 xlswrite('PSNR.xlsx', PSNR1_List, 'Sheet1', 'B2');
 
 
-Hae_header = {'Image Name', 'LSB_pair', 'LSB-pair-ultar'};
-Hae_List = [Hae_List_LSB, Hae_List_LSB_pair, Hae_List_LSB_pair_ultra];
-xlswrite('Hae.xlsx', Hae_header);
-xlswrite('Hae.xlsx', Image_List, 'Sheet1', 'A2');
-xlswrite('Hae.xlsx', Hae_List, 'Sheet1', 'B2');
+% Hae_header = {'Image Name', 'LSB_pair', 'LSB-pair-ultar'};
+% Hae_List = [Hae_List_LSB, Hae_List_LSB_pair, Hae_List_LSB_pair_ultra];
+% xlswrite('Hae.xlsx', Hae_header);
+% xlswrite('Hae.xlsx', Image_List, 'Sheet1', 'A2');
+% xlswrite('Hae.xlsx', Hae_List, 'Sheet1', 'B2');
 
