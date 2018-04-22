@@ -45,12 +45,12 @@ for i = 1: imageNum
     PSNR_pair_ultra_List(i) = PSNR_pair_ultra;
 %     PSNR_pair1_List(i) = PSNR_pair1;
 
-    % Hm[n]
-    Hmx = 0:255;
-    Hm = Hae(hostImg, watermarkedImg);
-    Hm_pair = Hae(hostImg, watermarkedImg_pair);
-    Hm_pair_ultra = Hae(hostImg, watermarkedImg_pair_ultra);
-
+%     % Hm[n]
+%     Hmx = 0:255;
+%     Hm = Hae(hostImg, watermarkedImg);
+%     Hm_pair = Hae(hostImg, watermarkedImg_pair);
+%     Hm_pair_ultra = Hae(hostImg, watermarkedImg_pair_ultra);
+% 
 %     % Hae
 %     Hm1 = abs(Hm);
 %     Hm_pair = abs(Hm_pair);

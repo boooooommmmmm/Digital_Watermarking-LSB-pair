@@ -30,22 +30,12 @@ r = 1; % row
 c = 1; % column
 watermarkedImg = hostImg;
 
-n0 = 0; % number of 0 in binary watermark
-n1 = 0; % number of 1 in binary watermark
 k = 0;
 flag = false;
 for i = 1:H_binWatermark
     for j = 1:W_binWatermark
         n = str2double(binWatermark(i, j)); % get the bit from watermark
-        % count the  number of 0 and 1
-        if n == 0
-            n0 = n0 + 1;
-        else
-            n1 = n1 + 1;
-        end
-%         if c == 33
-%             fprintf('end of a row');
-%         end
+
         if flag == true
             flag = false;
             c = c + 1; % move to next pixel
@@ -59,10 +49,10 @@ for i = 1:H_binWatermark
         
         % change happens
         if n ~= bitget(watermarkedImg(r, c), 1)
-             if i == H_binWatermark && j == W_binWatermark
-                 watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);
-                 continue;%skip pair = false
-             end
+            if i == H_binWatermark && j == W_binWatermark
+                watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);
+                continue;%skip pair = false
+            end
             pair = false;
             pixel = double(watermarkedImg(r, c)); % the gray level of current pixel
             
@@ -83,7 +73,7 @@ for i = 1:H_binWatermark
                     end
                 end
                 
-            %if normal case
+                %if normal case
             else
                 next_pixel = double(watermarkedImg(r, c + 1));
                 if (mod(pixel, 2) == 1 && next_pixel > pixel)||(mod(pixel, 2) == 0 && next_pixel < pixel)
@@ -97,19 +87,19 @@ for i = 1:H_binWatermark
                         watermarkedImg(r, c + 1) = pixel;
                         pair = true;
                     end
-                 end
+                end
             end
             if pair == true
-                    k = k + 1;
-                end
+                k = k + 1;
+                
                 flag = true;
             else
                 watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);
             end
         end
-
+        
         c = c + 1; % move to next pixel
-
+        
         % this is the last pixel of this row
         if c > W
             r = r + 1; % move to next row
