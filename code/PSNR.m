@@ -26,6 +26,7 @@ end
 
 MSE = sum / (H1 * W1);
 
-psnr = 10 * (log10(255^2 / MSE));
+%psnr = 10 * (log10(255^2 / MSE));
+psnr = sum;
 end
 

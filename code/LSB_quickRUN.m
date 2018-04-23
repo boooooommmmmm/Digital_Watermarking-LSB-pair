@@ -13,7 +13,7 @@ Hae_List_LSB_pair_ultra = zeros(imageNum, 1);
 
 Image_List = cell(imageNum, 1);
 
-for i = 1: imageNum
+for i = 1: 10
     hostImage = imageList(i).name;
     index = strfind(hostImage, '.');                        %index is the digit+1 of image name. e.g 100=>4; 10=>3. First (index-1) stand for image name, the last stand for dot ".".
     imageName = hostImage(1:index - 1);                     %image name is an char list, 1 to index-1 is the image name, exit in ASCII stand. e.g 8=>56; 2=>50
@@ -59,10 +59,9 @@ for i = 1: imageNum
 %     Hae_List_LSB(i) = sum(Hm1);
 %     Hae_List_LSB_pair(i) = sum(Hm_pair);
 %     Hae_List_LSB_pair_ultra(i) = sum(Hm_pair_ultra);
-    
+        
     fprintf('Processing... (%d of %d) has been done...\n', i,imageNum);
 end
-
 
 
 PSNR_header = {'Image Name', 'LSB', 'LSB_pair', 'LSB-pair-ultar'};

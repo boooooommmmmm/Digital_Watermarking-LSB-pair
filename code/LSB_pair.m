@@ -61,7 +61,7 @@ for i = 1:H_binWatermark
         if n ~= bitget(watermarkedImg(r, c), 1)
              if i == H_binWatermark && j == W_binWatermark
                  watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);
-                 continue;%skip pair = false
+                 continue;%end iteration
              end
             pair = false;
             pixel = double(watermarkedImg(r, c)); % the gray level of current pixel
