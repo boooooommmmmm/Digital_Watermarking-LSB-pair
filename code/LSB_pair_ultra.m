@@ -98,7 +98,7 @@ for i = 1:H_binWatermark
         end
     end
 end
-fprintf('pairs: %d\n', k);
+
 % fprintf('number of 0: %d\n', n0);
 % fprintf('number of 1: %d\n', n1);
 % fprintf('number of k: %d\n', k);
