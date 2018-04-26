@@ -99,7 +99,7 @@ for i = 1:H_binWatermark
     end
 end
 
-fprintf("i0: %d, j0: %d     ",i,j);
+% fprintf("i0: %d, j0: %d     ",i,j);
 % add stop byte
 for i = 1:15
     watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, 0);    

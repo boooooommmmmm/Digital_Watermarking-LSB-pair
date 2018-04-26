@@ -32,7 +32,7 @@ for i = 1:H_binWatermark
     end
 end
 
-fprintf("i: %d, j: %d      ", i ,j);
+%fprintf("i: %d, j: %d      ", i ,j);
 % binWatermarkWrite = zeros(i, j);
 binWatermarkWrite = binWatermark(1:i-1,:);
 
