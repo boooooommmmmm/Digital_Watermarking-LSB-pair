@@ -21,42 +21,43 @@ for i = 1: 10
     Image_List{i} = imageName;
     hostImage = strcat('grayscale photo\', hostImage);      %hostImage = path
     
-    [hieght, width] = LSB_embed(hostImage, 'watermark.txt', strcat('LSB photo\', strcat(imageName, '.png')));
-    LSB_extract(hieght, width, strcat('LSB photo\', strcat(imageName, '.png')), strcat('extract\',strcat(imageName, '.txt')));
-    
-    [hieght, width] = LSB_pair(hostImage, 'watermark.txt', strcat('LSB-pair photo\', strcat(imageName, '.png')));
-    LSB_extract(hieght, width, strcat('LSB-pair photo\', strcat(imageName, '.png')), strcat('extract_pair\',strcat(imageName, '.txt')));
-    
-    [hieght, width] = LSB_pair_1(hostImage, 'watermark.txt', strcat('LSB-pair1 photo\', strcat(imageName, '.png')));
-    LSB_extract(hieght, width, strcat('LSB-pair1 photo\', strcat(imageName, '.png')), strcat('extract_pair1\',strcat(imageName, '.txt')));
+    %     [hieght, width] = LSB_embed(hostImage, 'watermark.txt', strcat('LSB photo\', strcat(imageName, '.png')));
+    %     %fprintf('hieght... (%d of %d) width...\n', hieght,width);
+    %     LSB_extract(hieght, width, strcat('LSB photo\', strcat(imageName, '.png')), strcat('extract\',strcat(imageName, '.txt')));
+    %
+    %     [hieght, width] = LSB_pair(hostImage, 'watermark.txt', strcat('LSB-pair photo\', strcat(imageName, '.png')));
+    %     LSB_extract(hieght, width, strcat('LSB-pair photo\', strcat(imageName, '.png')), strcat('extract_pair\',strcat(imageName, '.txt')));
+    %
+    %     [hieght, width] = LSB_pair_1(hostImage, 'watermark.txt', strcat('LSB-pair1 photo\', strcat(imageName, '.png')));
+    %     LSB_extract(hieght, width, strcat('LSB-pair1 photo\', strcat(imageName, '.png')), strcat('extract_pair1\',strcat(imageName, '.txt')));
     
     %     [hieght, width] = LSB_pair_new(hostImage, 'watermark.txt', strcat('LSB_pair_new photo\', strcat(imageName, '.png')));
     %     LSB_extract(hieght, width, strcat('LSB_pair_new photo\', strcat(imageName, '.png')), strcat('extract_LSB_pair_new\',strcat(imageName, '.txt')));
     
-    [hieght, width] = LSB_pair_ultra(hostImage, 'watermark.txt', strcat('LSB_pair_ultra photo\', strcat(imageName, '.png')));
-    LSB_extract(hieght, width, strcat('LSB_pair_ultra photo\', strcat(imageName, '.png')), strcat('extract_LSB_pair_ultra\',strcat(imageName, '.txt')));
+    LSB_pair_ultra(hostImage, 'watermark.txt', strcat('LSB_pair_ultra photo\', strcat(imageName, '.png')));
+    LSB_extract_new(strcat('LSB_pair_ultra photo\', strcat(imageName, '.png')), strcat('extract_LSB_pair_ultra\',strcat(imageName, '.txt')));
     
-       
+    
     hostImg = imread(hostImage);
-    watermarkedImg = imread(strcat('LSB photo\', strcat(imageName, '.png')));
-    watermarkedImg_pair = imread(strcat('LSB-pair photo\', strcat(imageName, '.png')));
-    watermarkedImg_pair1 = imread(strcat('LSB-pair1 photo\', strcat(imageName, '.png')));
+    %     watermarkedImg = imread(strcat('LSB photo\', strcat(imageName, '.png')));
+    %     watermarkedImg_pair = imread(strcat('LSB-pair photo\', strcat(imageName, '.png')));
+    %     watermarkedImg_pair1 = imread(strcat('LSB-pair1 photo\', strcat(imageName, '.png')));
     %     watermarkedImg_pair_new = imread(strcat('LSB_pair_new photo\', strcat(imageName, '.png')));
     watermarkedImg_pair_ultra = imread(strcat('LSB_pair_ultra photo\', strcat(imageName, '.png')));
     
     % PSNR
-    PSNR1 = PSNR(hostImg, watermarkedImg);
-    PSNR_pair = PSNR(hostImg, watermarkedImg_pair);
-    PSNR_pair1 = PSNR(hostImg, watermarkedImg_pair1);
+    %     PSNR1 = PSNR(hostImg, watermarkedImg);
+    %     PSNR_pair = PSNR(hostImg, watermarkedImg_pair);
+    %     PSNR_pair1 = PSNR(hostImg, watermarkedImg_pair1);
     %     PSNR_pair_new = PSNR(hostImg, watermarkedImg_pair_new);
     PSNR_pair_ultra = PSNR(hostImg, watermarkedImg_pair_ultra);
-
-    PSNR_List(i) = PSNR1;
-    PSNR_pair_List(i) = PSNR_pair;
-    PSNR_pair1_List(i) = PSNR_pair1;
+    
+    %     PSNR_List(i) = PSNR1;
+    %     PSNR_pair_List(i) = PSNR_pair;
+    %     PSNR_pair1_List(i) = PSNR_pair1;
     %     PSNR_pair_new_List(i) = PSNR_pair_new;
     PSNR_pair_ultra_List(i) = PSNR_pair_ultra;
-
+    
     
     %     % Hm[n]
     %     Hmx = 0:255;
@@ -80,11 +81,11 @@ for i = 1: 10
 end
 
 
-PSNR_header = {'Image Name', 'LSB', 'LSB_pair', 'LSB_pair1', 'LSB-pair-ultar'};
-PSNR1_List = [PSNR_List, PSNR_pair_List, PSNR_pair1_List, PSNR_pair_ultra_List];
-xlswrite('PSNR.xlsx', PSNR_header);
-xlswrite('PSNR.xlsx', Image_List, 'Sheet1', 'A2');
-xlswrite('PSNR.xlsx', PSNR1_List, 'Sheet1', 'B2');
+% PSNR_header = {'Image Name', 'LSB', 'LSB_pair', 'LSB_pair1', 'LSB-pair-ultar'};
+% PSNR1_List = [PSNR_List, PSNR_pair_List, PSNR_pair1_List, PSNR_pair_ultra_List];
+% xlswrite('PSNR.xlsx', PSNR_header);
+% xlswrite('PSNR.xlsx', Image_List, 'Sheet1', 'A2');
+% xlswrite('PSNR.xlsx', PSNR1_List, 'Sheet1', 'B2');
 
 
 % Hae_header = {'Image Name','LSB', 'LSB_pair', 'LSB-pair-ultar'};

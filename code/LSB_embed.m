@@ -36,8 +36,8 @@ r = 1; % row
 c = 1; % column
 watermarkedImg = hostImg;
 
-n0 = 0; % number of 0 in binary watermark
-n1 = 0; % number of 1 in binary watermark
+% n0 = 0; % number of 0 in binary watermark
+% n1 = 0; % number of 1 in binary watermark
 
 for i = 1:H_binWatermark
     for j = 1:W_binWatermark

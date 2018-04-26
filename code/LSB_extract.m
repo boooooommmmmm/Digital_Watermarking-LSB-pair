@@ -6,13 +6,16 @@ function [] = LSB_extract(H_binWatermark, W_binWatermark, extractImg, extractFil
 % extractImg         the file name of watermarked image
 % extractFile        the file name program will output
 
-
 % read watermarked image
 watermarkedImg = imread(extractImg);
 
 % get the height and width of watermark image
 H = size(watermarkedImg, 1);
 W = size(watermarkedImg, 2);
+
+%---------------test------------
+H_binWatermark = 8571;
+W_binWatermark = 14;
 
 % extracting process
 r = 1; % row
