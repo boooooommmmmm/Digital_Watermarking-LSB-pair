@@ -102,13 +102,17 @@ end
 % fprintf("i0: %d, j0: %d     ",i,j);
 % add stop byte
 for i = 1:15
-    watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, 0);    
+    watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, 0);
     c = c + 1; % move to next pixel
     if c > W
         r = r + 1; % move to next row
         c = 1; % column reseted
     end
 end
+
+% fprintf('number of 0: %d\n', n0);
+% fprintf('number of 1: %d\n', n1);
+% fprintf('number of k: %d\n', k);
 
 % output the watermarked image
 imwrite(watermarkedImg, watermarkedImgFileName, 'png');
