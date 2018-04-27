@@ -21,7 +21,9 @@ H_binWatermark = size(binWatermark, 1);%6219
 W_binWatermark = size(binWatermark, 2);%14
 
 % compare the size between host image and watermark
-if H * W < H_binWatermark * W_binWatermark
+imageSize = H *W;
+messageSize = H_binWatermark*W_binWatermark;
+if imageSize < messageSize
     error('Watermark is too large to embed!');
 end
 
@@ -32,6 +34,84 @@ watermarkedImg = hostImg;
 
 k = 0;
 flag = false;
+
+hMessage = 1;
+wMessage = 1;
+sameNum = 0;
+maxSameNum = 0;
+currentWPos1 = 1;
+currentHPos1 = 1;
+bestWPos = 1;
+bestHPos = 1;
+breakFlag = 0;
+breakFlag2 = 0;
+matchCount = 0;
+for currentHPos1 = 1:H
+    for currentWPos1 = 1:W
+        sameNum = 0;
+        wMessage = 1;
+        hMessage = 1;
+        breakFlag = 0;
+        
+        for cImage = currentHPos1:H
+            for rImage = currentWPos1:W
+                %fprintf('hMessage: %d      ', wMessage);
+                if str2double(binWatermark(hMessage, wMessage)) == mod(double(watermarkedImg(r, c)),2)
+                    sameNum = sameNum + 1;
+                end
+                
+                wMessage = wMessage + 1;
+                
+                if wMessage == W_binWatermark && hMessage == H_binWatermark
+                    breakFlag = 1;
+                end
+                if wMessage > W_binWatermark
+                    wMessage = 1;
+                    hMessage = hMessage + 1;
+                end
+                
+                if breakFlag == 1
+                    break;
+                end
+            end%end first r
+            
+            if breakFlag == 1
+                break;
+            end
+        end%end frst c
+        
+        fprintf('MaxSameNumber: %d\n      ', maxSameNum);
+        fprintf('SameNumber: %d\n      ', matchCount);
+        if sameNum > maxSameNum
+            maxSameNum = sameNum;
+            bestHPos = currentHPos1;
+            bestWPos = currentWPos1;
+        end
+        
+        matchCount = matchCount + 1;
+        if imageSize - matchCount < messageSize
+            breakFlag2 = 1;
+        end
+        if breakFlag2 == 1
+            break;
+        end
+        
+        %         fprintf('Processing: %d      ', double((currentHPos1*currentWPos1)/(H*W)));
+    end
+    
+    if breakFlag2 == 1
+        break;
+    end
+end
+fprintf('MaxSameNumber: %d      ', maxSameNum);
+fprintf('Hpos: %d; WPOS: %d      ', bestHPos,bestWPos);
+
+
+
+
+
+
+
 for i = 1:H_binWatermark
     for j = 1:W_binWatermark
         n = str2double(binWatermark(i, j)); % get the bit from watermark
@@ -102,7 +182,7 @@ end
 % fprintf("i0: %d, j0: %d     ",i,j);
 % add stop byte
 for i = 1:15
-    watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, 0);    
+    watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, 0);
     c = c + 1; % move to next pixel
     if c > W
         r = r + 1; % move to next row
