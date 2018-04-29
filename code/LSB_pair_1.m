@@ -44,7 +44,7 @@ for i = 1:H_binWatermark
         else
             n1 = n1 + 1;
         end
-
+        
         if flag == true
             flag = false;
             c = c + 1; % move to next pixel
@@ -58,10 +58,10 @@ for i = 1:H_binWatermark
         
         % change happens
         if n ~= bitget(watermarkedImg(r, c), 1)
-             if i == H_binWatermark && j == W_binWatermark
-                 watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);
-                 continue;
-             end
+            if i == H_binWatermark && j == W_binWatermark
+                watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);
+                continue;
+            end
             pair = false;
             pixel = double(watermarkedImg(r, c)); % the gray level of current pixel
             if c == W
@@ -135,6 +135,7 @@ for i = 1:H_binWatermark
                     end
                 end
             end
+            
             if pair == true
                 if mod(pixel, 2) == 1 && next_pixel == pixel + 1
                     k = k + 1;
@@ -153,9 +154,9 @@ for i = 1:H_binWatermark
                 watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);
             end
         end
-
+        
         c = c + 1; % move to next pixel
-
+        
         % this is the last pixel of this row
         if c > W
             r = r + 1; % move to next row
@@ -164,9 +165,9 @@ for i = 1:H_binWatermark
     end
 end
 
-fprintf('number of 0: %d\n', n0);
-fprintf('number of 1: %d\n', n1);
-fprintf('number of k: %d\n', k);
+% fprintf('number of 0: %d\n', n0);
+% fprintf('number of 1: %d\n', n1);
+% fprintf('number of k: %d\n', k);
 
 % output the watermarked image
 imwrite(watermarkedImg, watermarkedImgFileName, 'png');
