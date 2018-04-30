@@ -59,7 +59,7 @@ for i = 1: 10
     %     PSNR_pair1_List(i) = PSNR_pair1;
     
     
-        % Hae% Hm[n]
+    % Hae% Hm[n]
     Hmx = 0:255;
     Hm = Hae(hostImg, watermarkedImg);
     Hm_pair = Hae(hostImg, watermarkedImg_pair);
@@ -110,9 +110,9 @@ xlswrite('Hae.xlsx', Hae_header);
 xlswrite('Hae.xlsx', Image_List, 'Sheet1', 'A2');
 xlswrite('Hae.xlsx', Hae_List, 'Sheet1', 'B2');
 
-Hae_header = {'Image Name', 'LSB', 'LSB_pair', 'LSB-pair-ultar'};
-Hae_List = [SSIM_List_LSB, SSIM_List_LSB_pair, SSIM_List_LSB_pair_ultra];
-xlswrite('SSIM.xlsx', Hae_header);
+SSIM_header = {'Image Name', 'LSB', 'LSB_pair', 'LSB-pair-ultar'};
+SSIM_List = [SSIM_List_LSB, SSIM_List_LSB_pair, SSIM_List_LSB_pair_ultra];
+xlswrite('SSIM.xlsx', SSIM_header);
 xlswrite('SSIM.xlsx', Image_List, 'Sheet1', 'A2');
-xlswrite('SSIM.xlsx', Hae_List, 'Sheet1', 'B2');
+xlswrite('SSIM.xlsx', SSIM_List, 'Sheet1', 'B2');
 
