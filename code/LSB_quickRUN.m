@@ -18,7 +18,7 @@ SSIM_List_LSB_pair_ultra = zeros(imageNum, 1);
 
 Image_List = cell(imageNum, 1);
 
-for i = 1: 10
+for i = 1: 100
     hostImage = imageList(i).name;
     index = strfind(hostImage, '.');                        %index is the digit+1 of image name. e.g 100=>4; 10=>3. First (index-1) stand for image name, the last stand for dot ".".
     imageName = hostImage(1:index - 1);                     %image name is an char list, 1 to index-1 is the image name, exit in ASCII stand. e.g 8=>56; 2=>50
@@ -37,7 +37,7 @@ for i = 1: 10
     %     [hieght, width] = LSB_pair_new(hostImage, 'watermark.txt', strcat('LSB_pair_new photo\', strcat(imageName, '.png')));
     %     LSB_extract(hieght, width, strcat('LSB_pair_new photo\', strcat(imageName, '.png')), strcat('extract_LSB_pair_new\',strcat(imageName, '.txt')));
     
-    [hieght, width] = LSB_pair_ultra(hostImage, 'watermark.txt', strcat('LSB_pair_ultra photo\', strcat(imageName, '.png')));
+    [hieght, width] = LSB_pair_triple(hostImage, 'watermark.txt', strcat('LSB_pair_ultra photo\', strcat(imageName, '.png')));
     LSB_extract(hieght, width,strcat('LSB_pair_ultra photo\', strcat(imageName, '.png')), strcat('extract_LSB_pair_ultra\',strcat(imageName, '.txt')));
     
     

@@ -1,4 +1,4 @@
-function [ H_binWatermark, W_binWatermark ] = LSB_pair_ultra(hostFileName, watermarkFileName, watermarkedImgFileName )
+function [ H_binWatermark, W_binWatermark ] = LSB_pair_triple(hostFileName, watermarkFileName, watermarkedImgFileName )
 %LSB_PIAR Summary of this function goes here
 
 % read host image
@@ -233,7 +233,8 @@ for i = 1:H_binWatermark
         
     end
 end
-fprintf("count3: %d",count3);
+
+% fprintf("count3: %d",count3);
 
 % fprintf("i0: %d, j0: %d     ",i,j);
 % % add stop byte
