@@ -74,8 +74,10 @@ for i = 1:H_binWatermark
                     end
                     if next_n ~= mod(next_pixel, 2)
                         temp_dist = distortion;
-                        temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
                         temp_dist(pixel) = temp_dist(pixel) + 1;
+                        temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
+                        temp_dist(pixel + 2) = temp_dist(pixel) - 1;
+                        temp_dist(pixel + 3) = temp_dist(pixel) + 1;
                         if sum(abs(temp_dist)) >= sum(abs(distortion))
                             watermarkedImg(r, c) = next_pixel;
                             watermarkedImg(r + 1, 1) = pixel;
@@ -109,8 +111,10 @@ for i = 1:H_binWatermark
                     end
                     if next_n ~= mod(next_pixel, 2)
                         temp_dist = distortion;
-                        temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
                         temp_dist(pixel) = temp_dist(pixel) + 1;
+                        temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
+                        temp_dist(pixel + 2) = temp_dist(pixel) - 1;
+                        temp_dist(pixel + 3) = temp_dist(pixel) + 1;
                         if sum(abs(temp_dist)) >= sum(abs(distortion))
                             watermarkedImg(r, c) = next_pixel;
                             watermarkedImg(r, c + 1) = pixel;

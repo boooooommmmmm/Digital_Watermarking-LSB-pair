@@ -10,6 +10,14 @@ PSNR_pair_ultra_List = zeros(imageNum, 1);
 
 PSNR_pair_List_PSNR_List_compare = zeros(3, 1);
 PSNR_pair_dual_List_PSNR_List_comapre = zeros(3, 1);
+PSNR_pair_triple_List_PSNR_List_comapre = zeros(3, 1);
+PSNR_pair_ultra_List_PSNR_List_comapre = zeros(3, 1);
+PSNR_pair_dual_List_PSNR_pair_List_comapre = zeros(3, 1);
+PSNR_pair_triple_List_PSNR_pair_List_comapre = zeros(3, 1);
+PSNR_pair_ultra_List_PSNR_pair_List_comapre = zeros(3, 1);
+PSNR_pair_triple_List_PSNR_pair_dual_List_comapre = zeros(3, 1);
+PSNR_pair_ultra_List_PSNR_pair_dual_List_comapre = zeros(3, 1);
+PSNR_pair_ultra_List_PSNR_pair_triple_List_comapre = zeros(3, 1);
 
 %Hae
 Hae_List_LSB = zeros(imageNum, 1);
@@ -49,8 +57,8 @@ for i = 1: 10
     hostImg = imread(hostImage);
     watermarkedImg = imread(strcat('LSB_photo\', strcat(imageName, '.png')));
     watermarkedImg_pair = imread(strcat('LSB_pair_photo\', strcat(imageName, '.png')));
-    watermarkedImg_pair_dual = imread(strcat('LSB_pair_photo\', strcat(imageName, '.png')));
-    watermarkedImg_pair_triple = imread(strcat('LSB_pair_photo\', strcat(imageName, '.png')));
+    watermarkedImg_pair_dual = imread(strcat('LSB_pair_dual_photo\', strcat(imageName, '.png')));
+    watermarkedImg_pair_triple = imread(strcat('LSB_pair_triple_photo\', strcat(imageName, '.png')));
 %     watermarkedImg_pair_ultra = imread(strcat('LSB_pair_ultra photo\', strcat(imageName, '.png')));        
         
     % PSNR
@@ -104,61 +112,14 @@ end
 
 
 % save the process result to Excel
-PSNR_pair_List_PSNR_List = PSNR_pair_List-PSNR_List;
-PSNR_pair_dual_List_PSNR_List = PSNR_pair_List-PSNR_pair_dual_List-PSNR_List;
-PSNR_pair_triple_List_PSNR_List = PSNR_pair_triple_List-PSNR_List;
-PSNR_pair_ultra_List_PSNR_List = PSNR_pair_ultra_List-PSNR_List;
-PSNR_pair_dual_List_PSNR_pair_List = PSNR_pair_dual_List-PSNR_pair_List;
-PSNR_pair_triple_List_PSNR_pair_List = PSNR_pair_triple_List-PSNR_pair_List;
-PSNR_pair_ultra_List_PSNR_pair_List = PSNR_pair_ultra_List-PSNR_pair_List;
-PSNR_pair_triple_List_PSNR_pair_dual_List = PSNR_pair_triple_List-PSNR_pair_dual_List;
-PSNR_pair_ultra_List_PSNR_pair_dual_List = PSNR_pair_ultra_List-PSNR_pair_dual_List;
-PSNR_pair_ultra_List_PSNR_pair_triple_List = PSNR_pair_ultra_List-PSNR_pair_triple_List;
-
-
 %Start PSNR evaluate
-n1 = 0;
-n2 = 0;
-n3 = 0;
-for i = 1: size(PSNR_pair_List_PSNR_List)
-    if PSNR_pair_List_PSNR_List(i) == 0
-        n1 = n1 + 1;
-    elseif PSNR_pair_List_PSNR_List(i) > 0
-        n2 = n2 + 1;
-    else
-        n3 = n3 + 1;
-    end
-end
-PSNR_pair_List_PSNR_List_compare(1) = n1;
-PSNR_pair_List_PSNR_List_compare(2) = n2;
-PSNR_pair_List_PSNR_List_compare(3) = n3;
+[PSNR_header_Sheet1, PSNR_result_List, PSNR_header_Sheet2, PSNR_compare_result_List] = ComparePSNR(PSNR_List, PSNR_pair_List, PSNR_pair_dual_List, PSNR_pair_triple_List,PSNR_pair_ultra_List);
 
-n1 = 0;
-n2 = 0;
-n3 = 0;
-for i = 1: size(PSNR_pair_dual_List_PSNR_List_comapre)
-    if PSNR_pair_dual_List_PSNR_List_comapre(i) == 0
-        n1 = n1 + 1;
-    elseif PSNR_pair_dual_List_PSNR_List_comapre(i) > 0
-        n2 = n2 + 1;
-    else
-        n3 = n3 + 1;
-    end
-end
-PSNR_pair_dual_List_PSNR_List_comapre(1) = n1;
-PSNR_pair_dual_List_PSNR_List_comapre(2) = n2;
-PSNR_pair_dual_List_PSNR_List_comapre(3) = n3;
-
-
-PSNR_header = {'Image Name', 'LSB',     'LSB_pair',     'LSB_pair_dual',     'LSB_pair_triple',     'LSB_pair_ultra',     'LSB_pair - LSB',         'LSB_pair_dual - LSB',        ' LSB_pair_triple - LSB',         'LSB_pair_ultra - LSB',         'LSB_pair_dual - LSB_pair',         'LSB_pair_triple - LSB_pair',         'LSB_pair_ultra - LSB_pair',         'LSB_pair_triple - LSB_pair_dual',         'LSB_pair_ultra - LSB_pair_dual',         'LSB_pair_ultra - LSB_pair_triple'};
-PSNR1_List = [                PSNR_List, PSNR_pair_List, PSNR_pair_dual_List, PSNR_pair_triple_List, PSNR_pair_ultra_List, PSNR_pair_List_PSNR_List, PSNR_pair_dual_List_PSNR_List, PSNR_pair_triple_List_PSNR_List, PSNR_pair_ultra_List_PSNR_List, PSNR_pair_dual_List_PSNR_pair_List, PSNR_pair_triple_List_PSNR_pair_List, PSNR_pair_ultra_List_PSNR_pair_List, PSNR_pair_triple_List_PSNR_pair_dual_List, PSNR_pair_ultra_List_PSNR_pair_dual_List, PSNR_pair_ultra_List_PSNR_pair_triple_List];
-PSNR_header_Sheet2 = {'PSNR_pair_List_PSNR_List_compare', 'PSNR_pair_dual_List_PSNR_List_comapre'};
-PSNR1_List_compare = [PSNR_pair_List_PSNR_List_compare,    PSNR_pair_dual_List_PSNR_List_comapre];
-xlswrite('PSNR.xlsx', PSNR_header);
+xlswrite('PSNR.xlsx', PSNR_header_Sheet1);
 xlswrite('PSNR.xlsx', Image_List, 'Sheet1', 'A2');
-xlswrite('PSNR.xlsx', PSNR1_List, 'Sheet1', 'B2');
+xlswrite('PSNR.xlsx', PSNR_result_List, 'Sheet1', 'B2');
 xlswrite('PSNR.xlsx', PSNR_header_Sheet2, 'Sheet2', 'A1');
-xlswrite('PSNR.xlsx', PSNR1_List_compare, 'Sheet2', 'A2');
+xlswrite('PSNR.xlsx', PSNR_compare_result_List, 'Sheet2', 'A2');
 
 
 Hae_header = {'Image Name', 'LSB', 'LSB_pair' 'LSB_pair_dual', 'LSB_pair_triple'};

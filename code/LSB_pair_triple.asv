@@ -31,7 +31,7 @@ c = 1; % column
 watermarkedImg = hostImg;
 
 k = 0;
-pair = false;
+pairFlag = false;
 triplePair = false;
 triplePair2 = false;
 noTriplePairDetect = false;
@@ -41,8 +41,8 @@ for i = 1:H_binWatermark
     for j = 1:W_binWatermark
         n = str2double(binWatermark(i, j)); % get the bit from watermark
         
-        if pair == true
-            pair = false;
+        if pairFlag == true
+            pairFlag = false;
             triplePair = false;
             watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);
             c = c + 1; % move to next pixel
@@ -79,7 +79,7 @@ for i = 1:H_binWatermark
             watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);
             continue;%end iteration
         end
-        
+                
         pair = false;%reset LSBpair
         triplePair = false;
         triplePair2 = false;
@@ -105,15 +105,15 @@ for i = 1:H_binWatermark
                 if mod(pixel, 2) == 1 && next_pixel == pixel + 1
                     if next_n ~= mod(next_pixel, 2)
                         temp_dist = distortion;
-                        temp_dist(pixel) = temp_dist(pixel) + 1;
                         temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
-                        temp_dist(pixel + 2) = temp_dist(pixel) - 1;
-                        temp_dist(pixel + 3) = temp_dist(pixel) + 1;
+                        temp_dist(pixel) = temp_dist(pixel) + 1;
                         if sum(abs(temp_dist)) >= sum(abs(distortion))
                             watermarkedImg(r, c) = next_pixel;
                             watermarkedImg(r + 1, 1) = pixel;
                             pair = true;
                             noTriplePairDetect = true;
+                        else
+                            fprint('sum no l');
                         end
                     end
                 elseif mod(pixel, 2) == 0 && next_pixel == pixel - 1
@@ -131,36 +131,13 @@ for i = 1:H_binWatermark
                 end
                 
                 %start triple pair detect
-                if noTriplePairDetect == true
-                    noTriplePairDetect = false;
-                elseif (mod(pixel, 2) == 1 && next_2pixel == pixel + 1 && n == 0 && next_2n == 1)||(mod(pixel, 2) == 0 && next_2pixel == pixel - 1 && n == 1 && next_2n == 0)
-                    if (mod(pixel, 2) == 1)
-                        temp_dist = distortion;
-                        temp_dist(pixel) = temp_dist(pixel) + 1;
-                        temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
-                        temp_dist(pixel + 2) = temp_dist(pixel) - 1;
-                        temp_dist(pixel + 3) = temp_dist(pixel) + 1;
-                        if sum(abs(temp_dist)) >= sum(abs(distortion))
-                            watermarkedImg(r, c) = next_2pixel;
-                            watermarkedImg(r + 1, 2) = pixel;
-                            triplePair = true;
-                            triplePair2 = true;
-                            count3 = count3 + 1;
-                        end
-                    end
-                    if (mod(pixel, 2) == 0)
-                        temp_dist = distortion;
-                        temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
-                        temp_dist(pixel + 2) = temp_dist(pixel + 2) + 1;
-                        if sum(abs(temp_dist)) >= sum(abs(distortion))
-                            watermarkedImg(r, c) = next_2pixel;
-                            watermarkedImg(r + 1, 2) = pixel;
-                            triplePair = true;
-                            triplePair2 = true;
-                            count3 = count3 + 1;
-                        end
-                    end
-                end % end triple pair detection
+                if (mod(pixel, 2) == 1 && next_2pixel == pixel - 1 && n == 0 && next_2n == 1)||(mod(pixel, 2) == 1 && next_2pixel == pixel + 1 && n == 0 && next_2n == 1)||(mod(pixel, 2) == 0 && next_2pixel == pixel + 1 && n == 1 && next_2n == 0)||(mod(pixel, 2) == 0 && next_2pixel == pixel - 1 && n == 1 && next_2n == 0)
+                    watermarkedImg(r, c) = next_2pixel;
+                    watermarkedImg(r + 1, 2) = pixel;
+                    triplePair = true;
+                    triplePair2 = true;
+                    count3 = count3 + 1;
+                end
                 
                 
             else %if normal case
@@ -188,10 +165,8 @@ for i = 1:H_binWatermark
                 if mod(pixel, 2) == 1 && next_pixel == pixel + 1
                     if next_n ~= mod(next_pixel, 2)
                         temp_dist = distortion;
-                        temp_dist(pixel) = temp_dist(pixel) + 1;
                         temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
-                        temp_dist(pixel + 2) = temp_dist(pixel) - 1;
-                        temp_dist(pixel + 3) = temp_dist(pixel) + 1;
+                        temp_dist(pixel) = temp_dist(pixel) + 1;
                         if sum(abs(temp_dist)) >= sum(abs(distortion))
                             watermarkedImg(r, c) = next_pixel;
                             watermarkedImg(r, c + 1) = pixel;
@@ -214,50 +189,29 @@ for i = 1:H_binWatermark
                     end
                 end
                 
-                %start triple pair detect
                 if noTriplePairDetect == true
                     noTriplePairDetect = false;
-                elseif (mod(pixel, 2) == 1 && next_2pixel == pixel + 1 && n == 0 && next_2n == 1)||(mod(pixel, 2) == 0 && next_2pixel == pixel - 1 && n == 1 && next_2n == 0)
-                    if (mod(pixel, 2) == 1)
-                        temp_dist = distortion;
-                        temp_dist(pixel) = temp_dist(pixel) + 1;
-                        temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
-                        temp_dist(pixel + 2) = temp_dist(pixel) - 1;
-                        temp_dist(pixel + 3) = temp_dist(pixel) + 1;
-                        if sum(abs(temp_dist)) >= sum(abs(distortion))
-                            watermarkedImg(r, c) = next_2pixel;
-                            if c == W - 1
-                                watermarkedImg(r + 1, 1) = pixel;
-                            else
-                                watermarkedImg(r, c + 2) = pixel;
-                            end
-                            triplePair = true;
-                            triplePair2 = true;
-                            count3 = count3 + 1;
-                        end
+                elseif (mod(pixel, 2) == 1 && next_2pixel == pixel - 1 && n == 0 && next_2n == 1)||(mod(pixel, 2) == 1 && next_2pixel == pixel + 1 && n == 0 && next_2n == 1)||(mod(pixel, 2) == 0 && next_2pixel == pixel + 1 && n == 1 && next_2n == 0)||(mod(pixel, 2) == 0 && next_2pixel == pixel - 1 && n == 1 && next_2n == 0)
+                    watermarkedImg(r, c) = next_2pixel;
+                    if c == W - 1
+                        watermarkedImg(r + 1, 1) = pixel;
+                    else
+                        watermarkedImg(r, c + 2) = pixel;
                     end
-                    if (mod(pixel, 2) == 0)
-                        temp_dist = distortion;
-                        temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
-                        temp_dist(pixel + 2) = temp_dist(pixel + 2) + 1;
-                        if sum(abs(temp_dist)) >= sum(abs(distortion))
-                            watermarkedImg(r, c) = next_2pixel;
-                            if c == W - 1
-                                watermarkedImg(r + 1, 1) = pixel;
-                            else
-                                watermarkedImg(r, c + 2) = pixel;
-                            end
-                            triplePair = true;
-                            triplePair2 = true;
-                            count3 = count3 + 1;
-                        end
-                    end
-                end % end triple pair detection
+                    triplePair = true;
+                    triplePair2 = true;
+                    count3 = count3 + 1;
+                end
                 
             end % end if c == W
             
             if pair == true
-                k = k + 1;
+                if mod(pixel, 2) == 1 && next_pixel == pixel + 1
+                    k = k + 1;
+                elseif mod(pixel, 2) == 0 && next_pixel == pixel - 1
+                    k = k + 1;
+                end
+                pairFlag = true;
             else
                 if mod(pixel, 2) == 1
                     distortion(pixel + 1) = distortion(pixel + 1) - 1;
@@ -280,8 +234,8 @@ for i = 1:H_binWatermark
         
     end
 end
-fprintf("k: %d      ",k);
-fprintf("count3: %d      ",count3);
+
+% fprintf("count3: %d",count3);
 
 % fprintf("i0: %d, j0: %d     ",i,j);
 % % add stop byte
@@ -293,6 +247,10 @@ fprintf("count3: %d      ",count3);
 %         c = 1; % column reseted
 %     end
 % end
+
+% fprintf('number of 0: %d\n', n0);
+% fprintf('number of 1: %d\n', n1);
+% fprintf('number of k: %d\n', k);
 
 % output the watermarked image
 imwrite(watermarkedImg, watermarkedImgFileName, 'png');
