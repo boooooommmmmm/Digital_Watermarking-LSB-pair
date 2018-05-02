@@ -60,9 +60,7 @@ for i = 1: 10
     PSNR_pair_dual_List(i) = PSNR_pair_dual;
     PSNR_pair_triple_List(i) = PSNR_pair_triple;
 %     PSNR_pair_ultra_List(i) = PSNR_pair_ultra;
-
-    
-    
+       
     % Hae% Hm[n]
     Hmx = 0:255;
     Hm = Hae(hostImg, watermarkedImg);
@@ -106,7 +104,6 @@ PSNR1_List = [PSNR_List, PSNR_pair_List, PSNR_pair_dual_List, PSNR_pair_triple_L
 xlswrite('PSNR.xlsx', PSNR_header);
 xlswrite('PSNR.xlsx', Image_List, 'Sheet1', 'A2');
 xlswrite('PSNR.xlsx', PSNR1_List, 'Sheet1', 'B2');
-
 
 Hae_header = {'Image Name', 'LSB', 'LSB_pair' 'LSB_pair_dual', 'LSB_pair_triple'};
 Hae_List = [Hae_List_LSB, Hae_List_LSB_pair, Hae_List_LSB_pair_dual, Hae_List_LSB_pair_triple];
