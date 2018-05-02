@@ -1,5 +1,6 @@
 function [PSNR_header_Sheet1, PSNR_result_List, PSNR_header_Sheet2, PSNR_compare_result_List] = ComparePSNR(PSNR_List, PSNR_pair_List, PSNR_pair_dual_List, PSNR_pair_triple_List,PSNR_pair_ultra_List)
 
+
 PSNR_pair_List_PSNR_List_compare = zeros(3, 1);
 PSNR_pair_dual_List_PSNR_List_comapre = zeros(3, 1);
 PSNR_pair_triple_List_PSNR_List_comapre = zeros(3, 1);
@@ -198,7 +199,7 @@ PSNR_pair_ultra_List_PSNR_pair_triple_List_comapre(3) = n3;
 
 PSNR_header_Sheet1 = {'Image Name', 'LSB',     'LSB_pair',     'LSB_pair_dual',     'LSB_pair_triple',     'LSB_pair_ultra',     'LSB_pair - LSB',         'LSB_pair_dual - LSB',        ' LSB_pair_triple - LSB',         'LSB_pair_ultra - LSB',         'LSB_pair_dual - LSB_pair',         'LSB_pair_triple - LSB_pair',         'LSB_pair_ultra - LSB_pair',         'LSB_pair_triple - LSB_pair_dual',         'LSB_pair_ultra - LSB_pair_dual',         'LSB_pair_ultra - LSB_pair_triple'};
 PSNR_result_List = [                 PSNR_List, PSNR_pair_List, PSNR_pair_dual_List, PSNR_pair_triple_List, PSNR_pair_ultra_List, PSNR_pair_List_PSNR_List, PSNR_pair_dual_List_PSNR_List, PSNR_pair_triple_List_PSNR_List, PSNR_pair_ultra_List_PSNR_List, PSNR_pair_dual_List_PSNR_pair_List, PSNR_pair_triple_List_PSNR_pair_List, PSNR_pair_ultra_List_PSNR_pair_List, PSNR_pair_triple_List_PSNR_pair_dual_List, PSNR_pair_ultra_List_PSNR_pair_dual_List, PSNR_pair_ultra_List_PSNR_pair_triple_List];
-PSNR_header_Sheet2 = {'     PSNR_pair_List_PSNR_List_compare',  'PSNR_pair_dual_List_PSNR_List_comapre', 'PSNR_pair_triple_List_PSNR_List_comapre', 'PSNR_pair_ultra_List_PSNR_List_comapre', 'PSNR_pair_dual_List_PSNR_pair_List_comapre', 'PSNR_pair_triple_List_PSNR_pair_List_comapre', 'PSNR_pair_ultra_List_PSNR_pair_List_comapre', 'PSNR_pair_triple_List_PSNR_pair_dual_List_comapre', 'PSNR_pair_ultra_List_PSNR_pair_dual_List_comapre', 'PSNR_pair_ultra_List_PSNR_pair_triple_List_comapre'};
+PSNR_header_Sheet2 = {     'PSNR_pair_List_PSNR_List_compare',  'PSNR_pair_dual_List_PSNR_List_comapre', 'PSNR_pair_triple_List_PSNR_List_comapre', 'PSNR_pair_ultra_List_PSNR_List_comapre', 'PSNR_pair_dual_List_PSNR_pair_List_comapre', 'PSNR_pair_triple_List_PSNR_pair_List_comapre', 'PSNR_pair_ultra_List_PSNR_pair_List_comapre', 'PSNR_pair_triple_List_PSNR_pair_dual_List_comapre', 'PSNR_pair_ultra_List_PSNR_pair_dual_List_comapre', 'PSNR_pair_ultra_List_PSNR_pair_triple_List_comapre'};
 PSNR_compare_result_List = [PSNR_pair_List_PSNR_List_compare,    PSNR_pair_dual_List_PSNR_List_comapre,   PSNR_pair_triple_List_PSNR_List_comapre,   PSNR_pair_ultra_List_PSNR_List_comapre,   PSNR_pair_dual_List_PSNR_pair_List_comapre,   PSNR_pair_triple_List_PSNR_pair_List_comapre,   PSNR_pair_ultra_List_PSNR_pair_List_comapre,   PSNR_pair_triple_List_PSNR_pair_dual_List_comapre,   PSNR_pair_ultra_List_PSNR_pair_dual_List_comapre,   PSNR_pair_ultra_List_PSNR_pair_triple_List_comapre];
 
 

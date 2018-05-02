@@ -280,8 +280,8 @@ for i = 1:H_binWatermark
         
     end
 end
-fprintf("k: %d      ",k);
-fprintf("count3: %d      ",count3);
+% fprintf("k: %d      ",k);
+% fprintf("count3: %d      ",count3);
 
 % fprintf("i0: %d, j0: %d     ",i,j);
 % % add stop byte

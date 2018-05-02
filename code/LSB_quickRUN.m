@@ -112,25 +112,38 @@ end
 
 
 % save the process result to Excel
+Sheet2_1={'Value: =0'};
+Sheet2_2={'Value: >0'};
+Sheet2_3={'Value: <0'};
 %Start PSNR evaluate
 [PSNR_header_Sheet1, PSNR_result_List, PSNR_header_Sheet2, PSNR_compare_result_List] = ComparePSNR(PSNR_List, PSNR_pair_List, PSNR_pair_dual_List, PSNR_pair_triple_List,PSNR_pair_ultra_List);
-
 xlswrite('PSNR.xlsx', PSNR_header_Sheet1);
 xlswrite('PSNR.xlsx', Image_List, 'Sheet1', 'A2');
 xlswrite('PSNR.xlsx', PSNR_result_List, 'Sheet1', 'B2');
 xlswrite('PSNR.xlsx', PSNR_header_Sheet2, 'Sheet2', 'A1');
-xlswrite('PSNR.xlsx', PSNR_compare_result_List, 'Sheet2', 'A2');
+xlswrite('PSNR.xlsx', Sheet2_1, 'Sheet2', 'A2');
+xlswrite('PSNR.xlsx', Sheet2_2, 'Sheet2', 'A3');
+xlswrite('PSNR.xlsx', Sheet2_3, 'Sheet2', 'A4');
+xlswrite('PSNR.xlsx', PSNR_compare_result_List, 'Sheet2', 'B2');
 
 
-Hae_header = {'Image Name', 'LSB', 'LSB_pair' 'LSB_pair_dual', 'LSB_pair_triple'};
-Hae_List = [Hae_List_LSB, Hae_List_LSB_pair, Hae_List_LSB_pair_dual, Hae_List_LSB_pair_triple];
-xlswrite('Hae.xlsx', Hae_header);
+[Hae_header_Sheet1, Hae_result_List, Hae_header_Sheet2, Hae_compare_result_List] = CompareHae(Hae_List_LSB, Hae_List_LSB_pair, Hae_List_LSB_pair_dual, Hae_List_LSB_pair_triple,Hae_List_LSB_pair_ultra);
+xlswrite('Hae.xlsx', Hae_header_Sheet1);
 xlswrite('Hae.xlsx', Image_List, 'Sheet1', 'A2');
-xlswrite('Hae.xlsx', Hae_List, 'Sheet1', 'B2');
+xlswrite('Hae.xlsx', Hae_result_List, 'Sheet1', 'B2');
+xlswrite('Hae.xlsx', Hae_header_Sheet2, 'Sheet2', 'A1');
+xlswrite('Hae.xlsx', Sheet2_1, 'Sheet2', 'A2');
+xlswrite('Hae.xlsx', Sheet2_2, 'Sheet2', 'A3');
+xlswrite('Hae.xlsx', Sheet2_3, 'Sheet2', 'A4');
+xlswrite('Hae.xlsx', Hae_compare_result_List, 'Sheet2', 'B2');
 
-SSIM_header = {'Image Name', 'LSB', 'LSB_pair' 'LSB_pair_dual', 'LSB_pair_triple'};
-SSIM_List = [SSIM_List_LSB, SSIM_List_LSB_pair, SSIM_List_LSB_pair_dual, SSIM_List_LSB_pair_triple];
-xlswrite('SSIM.xlsx', SSIM_header);
+[SSIM_header_Sheet1, SSIM_result_List, SSIM_header_Sheet2, SSIM_compare_result_List] = CompareSSIM(SSIM_List_LSB, SSIM_List_LSB_pair, SSIM_List_LSB_pair_dual, SSIM_List_LSB_pair_triple,SSIM_List_LSB_pair_ultra);
+xlswrite('SSIM.xlsx', SSIM_header_Sheet1);
 xlswrite('SSIM.xlsx', Image_List, 'Sheet1', 'A2');
-xlswrite('SSIM.xlsx', SSIM_List, 'Sheet1', 'B2');
+xlswrite('SSIM.xlsx', SSIM_result_List, 'Sheet1', 'B2');
+xlswrite('SSIM.xlsx', SSIM_header_Sheet2, 'Sheet2', 'A1');
+xlswrite('SSIM.xlsx', Sheet2_1, 'Sheet2', 'A2');
+xlswrite('SSIM.xlsx', Sheet2_2, 'Sheet2', 'A3');
+xlswrite('SSIM.xlsx', Sheet2_3, 'Sheet2', 'A4');
+xlswrite('SSIM.xlsx', SSIM_compare_result_List, 'Sheet2', 'B2');
 
