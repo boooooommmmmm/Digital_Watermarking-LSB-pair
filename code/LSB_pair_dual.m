@@ -136,13 +136,11 @@ for i = 1:H_binWatermark
             if pair == false && r~= H
                 next_row_pixel = double(watermarkedImg(r + 1, c));
                 if mod(pixel, 2) == 1 && next_row_pixel == pixel + 1
-                    row_change = fix((j + W)/W_binWatermark);                    
-                    if mod((j + W), W_binWatermark) == 0 && (i + row_change + 1) > H_binWatermark
+                    row_change = fix((j + W)/W_binWatermark);  
+                    if (i + row_change) > H_binWatermark
                         isSupport_next_row_n = false;
                     elseif mod((j + W), W_binWatermark) == 0
-                        next_row_n = str2double(binWatermark((i + row_change + 1), 1));
-                    elseif (i + row_change) > H_binWatermark
-                        isSupport_next_row_n = false;
+                        next_row_n = str2double(binWatermark((i + row_change -  1), W_binWatermark));                        
                     else
                         next_row_n = str2double(binWatermark((i + row_change), j + W - row_change*W_binWatermark));
                     end
@@ -162,14 +160,11 @@ for i = 1:H_binWatermark
                         end
                     end
                 elseif mod(pixel, 2) == 0 && next_row_pixel == pixel - 1
-                    row_change = fix((j + W)/W_binWatermark);
-                    
-                    if mod((j + W), W_binWatermark) == 0 && (i + row_change + 1) > H_binWatermark
+                    row_change = fix((j + W)/W_binWatermark);                    
+                    if (i + row_change) > H_binWatermark
                         isSupport_next_row_n = false;
                     elseif mod((j + W), W_binWatermark) == 0
-                        next_row_n = str2double(binWatermark((i + row_change + 1), 1));
-                    elseif (i + row_change) > H_binWatermark
-                        isSupport_next_row_n = false;
+                        next_row_n = str2double(binWatermark((i + row_change -  1), W_binWatermark));                        
                     else
                         next_row_n = str2double(binWatermark((i + row_change), j + W - row_change*W_binWatermark));
                     end

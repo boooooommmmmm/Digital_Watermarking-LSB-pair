@@ -34,7 +34,7 @@ SSIM_List_LSB_pair_ultra = zeros(imageNum, 1);
 
 Image_List = cell(imageNum, 1);
 
-for i = 1: 10
+for i = 1: 1000
     hostImage = imageList(i).name;
     index = strfind(hostImage, '.');                        %index is the digit+1 of image name. e.g 100=>4; 10=>3. First (index-1) stand for image name, the last stand for dot ".".
     imageName = hostImage(1:index - 1);                     %image name is an char list, 1 to index-1 is the image name, exit in ASCII stand. e.g 8=>56; 2=>50
@@ -120,7 +120,7 @@ Sheet2_3={'Value: <0'};
 xlswrite('PSNR.xlsx', PSNR_header_Sheet1);
 xlswrite('PSNR.xlsx', Image_List, 'Sheet1', 'A2');
 xlswrite('PSNR.xlsx', PSNR_result_List, 'Sheet1', 'B2');
-xlswrite('PSNR.xlsx', PSNR_header_Sheet2, 'Sheet2', 'A1');
+xlswrite('PSNR.xlsx', PSNR_header_Sheet2, 'Sheet2', 'B1');
 xlswrite('PSNR.xlsx', Sheet2_1, 'Sheet2', 'A2');
 xlswrite('PSNR.xlsx', Sheet2_2, 'Sheet2', 'A3');
 xlswrite('PSNR.xlsx', Sheet2_3, 'Sheet2', 'A4');
@@ -131,7 +131,7 @@ xlswrite('PSNR.xlsx', PSNR_compare_result_List, 'Sheet2', 'B2');
 xlswrite('Hae.xlsx', Hae_header_Sheet1);
 xlswrite('Hae.xlsx', Image_List, 'Sheet1', 'A2');
 xlswrite('Hae.xlsx', Hae_result_List, 'Sheet1', 'B2');
-xlswrite('Hae.xlsx', Hae_header_Sheet2, 'Sheet2', 'A1');
+xlswrite('Hae.xlsx', Hae_header_Sheet2, 'Sheet2', 'B1');
 xlswrite('Hae.xlsx', Sheet2_1, 'Sheet2', 'A2');
 xlswrite('Hae.xlsx', Sheet2_2, 'Sheet2', 'A3');
 xlswrite('Hae.xlsx', Sheet2_3, 'Sheet2', 'A4');
@@ -141,7 +141,7 @@ xlswrite('Hae.xlsx', Hae_compare_result_List, 'Sheet2', 'B2');
 xlswrite('SSIM.xlsx', SSIM_header_Sheet1);
 xlswrite('SSIM.xlsx', Image_List, 'Sheet1', 'A2');
 xlswrite('SSIM.xlsx', SSIM_result_List, 'Sheet1', 'B2');
-xlswrite('SSIM.xlsx', SSIM_header_Sheet2, 'Sheet2', 'A1');
+xlswrite('SSIM.xlsx', SSIM_header_Sheet2, 'Sheet2', 'B1');
 xlswrite('SSIM.xlsx', Sheet2_1, 'Sheet2', 'A2');
 xlswrite('SSIM.xlsx', Sheet2_2, 'Sheet2', 'A3');
 xlswrite('SSIM.xlsx', Sheet2_3, 'Sheet2', 'A4');
