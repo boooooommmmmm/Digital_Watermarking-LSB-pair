@@ -36,11 +36,13 @@ n1 = 0; % number of 1 in binary watermark
 k = 0;
 isSupport_next_row_n = true;
 pair = false;
+cross_pair = false;
 
 for i = 1:H_binWatermark
     for j = 1:W_binWatermark
         n = str2double(binWatermark(i, j)); % get the bit from watermark
         isSupport_next_row_n = true;
+        cross_pair = false;
         
         if pair == true
             pair = false;
@@ -136,11 +138,11 @@ for i = 1:H_binWatermark
             if pair == false && r~= H
                 next_row_pixel = double(watermarkedImg(r + 1, c));
                 if mod(pixel, 2) == 1 && next_row_pixel == pixel + 1
-                    row_change = fix((j + W)/W_binWatermark);  
+                    row_change = fix((j + W)/W_binWatermark);
                     if (i + row_change) > H_binWatermark
                         isSupport_next_row_n = false;
                     elseif mod((j + W), W_binWatermark) == 0
-                        next_row_n = str2double(binWatermark((i + row_change -  1), W_binWatermark));                        
+                        next_row_n = str2double(binWatermark((i + row_change -  1), W_binWatermark));
                     else
                         next_row_n = str2double(binWatermark((i + row_change), j + W - row_change*W_binWatermark));
                     end
@@ -160,11 +162,11 @@ for i = 1:H_binWatermark
                         end
                     end
                 elseif mod(pixel, 2) == 0 && next_row_pixel == pixel - 1
-                    row_change = fix((j + W)/W_binWatermark);                    
+                    row_change = fix((j + W)/W_binWatermark);
                     if (i + row_change) > H_binWatermark
                         isSupport_next_row_n = false;
                     elseif mod((j + W), W_binWatermark) == 0
-                        next_row_n = str2double(binWatermark((i + row_change -  1), W_binWatermark));                        
+                        next_row_n = str2double(binWatermark((i + row_change -  1), W_binWatermark));
                     else
                         next_row_n = str2double(binWatermark((i + row_change), j + W - row_change*W_binWatermark));
                     end
@@ -184,7 +186,7 @@ for i = 1:H_binWatermark
                 end
             end % end cross pair detect
             
-            if pair == true
+            if (pair == true) || (cross_pair == true)
                 k = k + 1;
             else
                 if mod(pixel, 2) == 1

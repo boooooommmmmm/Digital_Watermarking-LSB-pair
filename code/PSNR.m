@@ -14,7 +14,7 @@ W2 = size(image2, 2);
 
 if H1 ~= H2 || W1 ~= W2
     fprintf('h1: %d;    w1: %d    ',H1,W1);
-        fprintf('h2: %d;    w2: %d    ',H2,W2);
+    fprintf('h2: %d;    w2: %d    ',H2,W2);
     error('These two images are different!');
 end
 
