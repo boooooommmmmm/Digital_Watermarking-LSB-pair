@@ -45,7 +45,7 @@ for i = 1: 100
     LSB_extract(hieght, width, strcat('LSB_photo\', strcat(imageName, '.png')), strcat('extract_LSB\',strcat(imageName, '.txt')));
     
     [hieght, width] = LSB_pair_1(hostImage, 'watermark.txt', strcat('LSB_pair_photo\', strcat(imageName, '.png')));
-    LSB_extract(hieght, width, strcat('LSB_pair_photo\', strcat(imageName, '.png')), strcat('extract_pair\',strcat(imageName, '.txt')));
+    LSB_extract(hieght, width, strcat('LSB_pair_photo\', strcat(imageName, '.png')), strcat('extract_LSB_pair\',strcat(imageName, '.txt')));
     
     [hieght, width] = LSB_pair_dual(hostImage, 'watermark.txt', strcat('LSB_pair_dual_photo\', strcat(imageName, '.png')));
     LSB_extract(hieght, width,strcat('LSB_pair_dual_photo\', strcat(imageName, '.png')), strcat('extract_LSB_pair_dual\',strcat(imageName, '.txt')));
