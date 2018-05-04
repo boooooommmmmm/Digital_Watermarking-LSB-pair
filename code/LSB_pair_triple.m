@@ -178,6 +178,9 @@ for i = 1:H_binWatermark
                     noTriplePairDetect = true;
                 end
             end
+            if (j == W_binWatermark) || (j == W_binWatermark - 1)
+                noTriplePairDetect = true;
+            end
             
             if noTriplePairDetect == true
                 noTriplePairDetect = false;
