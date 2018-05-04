@@ -1,6 +1,6 @@
 # README
 
-![downloads here](https://img.shields.io/github/downloads/boooooommmmmm/Digital_Watermarking-LSB-pair/latest/total.svg?style=social)![stars here](https://img.shields.io/github/stars/boooooommmmmm/Digital_Watermarking-LSB-pair.svg)![license here](https://img.shields.io/github/license/boooooommmmmm/Digital_Watermarking-LSB-pair.svg)![language here](https://img.shields.io/github/languages/top/boooooommmmmm/Digital_Watermarking-LSB-pair.svg)![last commit here](https://img.shields.io/github/last-commit/boooooommmmmm/Digital_Watermarking-LSB-pair.svg)
+![downloads here](https://img.shields.io/github/downloads/boooooommmmmm/Digital_Watermarking-LSB-pair/latest/total.svg?style=social)  ![stars here](https://img.shields.io/github/stars/boooooommmmmm/Digital_Watermarking-LSB-pair.svg)  ![license here](https://img.shields.io/github/license/boooooommmmmm/Digital_Watermarking-LSB-pair.svg)  ![language here](https://img.shields.io/github/languages/top/boooooommmmmm/Digital_Watermarking-LSB-pair.svg)  ![last commit here](https://img.shields.io/github/last-commit/boooooommmmmm/Digital_Watermarking-LSB-pair.svg)
 
 This code is the application of **improved LSB pair replacement** approaches to *reduce distortion* of watermarking image.
 
