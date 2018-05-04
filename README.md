@@ -17,13 +17,13 @@ Before running the code, you need get following things ready:
 * A `watermark.txt` txt file contains the watermarking message, it need located in `root` folder.
 * Following empty folders to store output watermarked images. 
 
-![pic1 here](pic\1.png)
+![pic1 here](https://github.com/boooooommmmmm/Digital_Watermarking-LSB-pair/blob/master/pic/1.png)
 
 <br />
 
 ### How to run it
 
-[`LSB_RUN`](code/LSB_RUN.m)is the only file which is executable in MATLAB. While running it, it will automatically reading all image files in the `grayscale photo` folder. 
+[`LSB_RUN`](https://github.com/boooooommmmmm/Digital_Watermarking-LSB-pair/blob/master/code/LSB_run.m)is the only file which is executable in MATLAB. While running it, it will automatically reading all image files in the `grayscale photo` folder. 
 
 The code will using following watermarking methods:
 
