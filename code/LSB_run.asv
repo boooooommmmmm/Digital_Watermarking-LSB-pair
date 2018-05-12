@@ -94,8 +94,8 @@ for i = 1: 10
     PSNR_pair_dual_List(i) = PSNR_pair_dual;
     PSNR_pair_triple_List(i) = PSNR_pair_triple;
     PSNR_pair_ultra_List(i) = PSNR_pair_ultra;
-    PSNR_pair_diagonal_List(i) = PSNR_pair_diagonal;
-    PSNR_pair_crossDoubleLine_List(i) = PSNR_pair_crossDoubleLine;
+        PSNR_pair_diagonal_List(i) = PSNR_pair_ultra;
+            PSNR_pair_ultra_List(i) = PSNR_pair_ultra;
        
     % Hae% Hm[n]
     Hmx = 0:255;
@@ -104,24 +104,18 @@ for i = 1: 10
     Hm_pair_dual = Hae(hostImg, watermarkedImg_pair_dual);
     Hm_pair_triple = Hae(hostImg, watermarkedImg_pair_triple);
     Hm_pair_ultra = Hae(hostImg, watermarkedImg_pair_ultra);
-    Hm_pair_diagonal = Hae(hostImg, watermarkedImg_pair_diagonal);
-    Hm_pair_crossDoubleLine = Hae(hostImg, watermarkedImg_pair_crossDoubleLine);
     
     Hm1 = abs(Hm);
     Hm_pair = abs(Hm_pair);
     Hm_pair_dual = abs(Hm_pair_dual);
     Hm_pair_triple = abs(Hm_pair_triple);
     Hm_pair_ultra = abs(Hm_pair_ultra);
-    Hm_pair_diagonal = abs(Hm_pair_diagonal);
-    Hm_pair_crossDoubleLine = abs(Hm_pair_crossDoubleLine);
     
     Hae_List_LSB(i) = sum(Hm1);
     Hae_List_LSB_pair(i) = sum(Hm_pair);
     Hae_List_LSB_pair_dual(i) = sum(Hm_pair_dual);
     Hae_List_LSB_pair_triple(i) = sum(Hm_pair_triple);
     Hae_List_LSB_pair_ultra(i) = sum(Hm_pair_ultra);
-    Hae_List_LSB_pair_diagonal(i) = sum(Hm_pair_diagonal);
-    Hae_List_LSB_pair_crossDoubleLine(i) = sum(Hm_pair_crossDoubleLine);
     
     %SSIM
     SSIM1 = SSIM(hostImg, watermarkedImg);
@@ -145,7 +139,7 @@ Sheet2_1={'Value: =0'};
 Sheet2_2={'Value: >0'};
 Sheet2_3={'Value: <0'};
 %Start PSNR evaluate
-[PSNR_header_Sheet1, PSNR_result_List, PSNR_header_Sheet2, PSNR_compare_result_List] = ComparePSNR(PSNR_List, PSNR_pair_List, PSNR_pair_dual_List, PSNR_pair_triple_List,PSNR_pair_ultra_List,PSNR_pair_diagonal_List,PSNR_pair_crossDoubleLine_List);
+[PSNR_header_Sheet1, PSNR_result_List, PSNR_header_Sheet2, PSNR_compare_result_List] = ComparePSNR(PSNR_List, PSNR_pair_List, PSNR_pair_dual_List, PSNR_pair_triple_List,PSNR_pair_ultra_List);
 xlswrite('PSNR.xlsx', PSNR_header_Sheet1);
 xlswrite('PSNR.xlsx', Image_List, 'Sheet1', 'A2');
 xlswrite('PSNR.xlsx', PSNR_result_List, 'Sheet1', 'B2');
