@@ -8,7 +8,7 @@ hostImg = imread(hostFileName);
 % get the height and width of host image
 H = size(hostImg, 1);
 W = size(hostImg, 2);
-diagonal
+
 % read watermark file
 watermarkFile = fopen(watermarkFileName, 'r');
 watermark = fgets(watermarkFile);

@@ -41,8 +41,9 @@ SSIM_List_LSB_pair_diagonal = zeros(imageNum, 1);
 SSIM_List_LSB_pair_crossDoubleLine = zeros(imageNum, 1);
 
 Image_List = cell(imageNum, 1);
- 
+
 for i = 1: 10
+    
     hostImage = imageList(i).name;
     index = strfind(hostImage, '.');                        %index is the digit+1 of image name. e.g 100=>4; 10=>3. First (index-1) stand for image name, the last stand for dot ".".
     imageName = hostImage(1:index - 1);                     %image name is an char list, 1 to index-1 is the image name, exit in ASCII stand. e.g 8=>56; 2=>50
@@ -76,10 +77,10 @@ for i = 1: 10
     watermarkedImg_pair = imread(strcat('LSB_pair_photo\', strcat(imageName, '.png')));
     watermarkedImg_pair_dual = imread(strcat('LSB_pair_dual_photo\', strcat(imageName, '.png')));
     watermarkedImg_pair_triple = imread(strcat('LSB_pair_triple_photo\', strcat(imageName, '.png')));
-    watermarkedImg_pair_ultra = imread(strcat('LSB_pair_ultra_photo\', strcat(imageName, '.png')));  
+    watermarkedImg_pair_ultra = imread(strcat('LSB_pair_ultra_photo\', strcat(imageName, '.png')));
     watermarkedImg_pair_diagonal = imread(strcat('LSB_pair_diagonal_photo\', strcat(imageName, '.png')));
     watermarkedImg_pair_crossDoubleLine = imread(strcat('LSB_pair_crossDoubleLine_photo\', strcat(imageName, '.png')));
-        
+    
     % PSNR
     PSNR1 = PSNR(hostImg, watermarkedImg);
     PSNR_pair = PSNR(hostImg, watermarkedImg_pair);
@@ -88,7 +89,7 @@ for i = 1: 10
     PSNR_pair_ultra = PSNR(hostImg, watermarkedImg_pair_ultra);
     PSNR_pair_diagonal = PSNR(hostImg, watermarkedImg_pair_diagonal);
     PSNR_pair_crossDoubleLine = PSNR(hostImg, watermarkedImg_pair_crossDoubleLine);
-
+    
     PSNR_List(i) = PSNR1;
     PSNR_pair_List(i) = PSNR_pair;
     PSNR_pair_dual_List(i) = PSNR_pair_dual;
@@ -96,7 +97,7 @@ for i = 1: 10
     PSNR_pair_ultra_List(i) = PSNR_pair_ultra;
     PSNR_pair_diagonal_List(i) = PSNR_pair_diagonal;
     PSNR_pair_crossDoubleLine_List(i) = PSNR_pair_crossDoubleLine;
-       
+    
     % Hae% Hm[n]
     Hmx = 0:255;
     Hm = Hae(hostImg, watermarkedImg);
@@ -156,7 +157,7 @@ xlswrite('PSNR.xlsx', Sheet2_3, 'Sheet2', 'A4');
 xlswrite('PSNR.xlsx', PSNR_compare_result_List, 'Sheet2', 'B2');
 
 
-[Hae_header_Sheet1, Hae_result_List, Hae_header_Sheet2, Hae_compare_result_List] = CompareHae(Hae_List_LSB, Hae_List_LSB_pair, Hae_List_LSB_pair_dual, Hae_List_LSB_pair_triple,Hae_List_LSB_pair_ultra);
+[Hae_header_Sheet1, Hae_result_List, Hae_header_Sheet2, Hae_compare_result_List] = CompareHae(Hae_List_LSB, Hae_List_LSB_pair, Hae_List_LSB_pair_dual, Hae_List_LSB_pair_triple,Hae_List_LSB_pair_ultra, Hae_List_LSB_pair_diagonal, Hae_List_LSB_pair_crossDoubleLine);
 xlswrite('Hae.xlsx', Hae_header_Sheet1);
 xlswrite('Hae.xlsx', Image_List, 'Sheet1', 'A2');
 xlswrite('Hae.xlsx', Hae_result_List, 'Sheet1', 'B2');
