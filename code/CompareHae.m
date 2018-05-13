@@ -224,10 +224,10 @@ Hae_pair_ultra_List_Hae_pair_triple_List_comapre(3) = n3;
 n1 = 0;
 n2 = 0;
 n3 = 0;
-for i = 1: size(Hae_pair_ultra_List_Hae_pair_triple_List)
-    if Hae_pair_ultra_List_Hae_pair_triple_List(i) == 0
+for i = 1: size(Hae_pair_diagonal_List_Hae_List)
+    if Hae_pair_diagonal_List_Hae_List(i) == 0
         n1 = n1 + 1;
-    elseif Hae_pair_ultra_List_Hae_pair_triple_List(i) > 0
+    elseif Hae_pair_diagonal_List_Hae_List(i) > 0
         n2 = n2 + 1;
     else
         n3 = n3 + 1;
@@ -241,10 +241,10 @@ Hae_pair_diagonal_List_Hae_List_compare(3) = n3;
 n1 = 0;
 n2 = 0;
 n3 = 0;
-for i = 1: size(Hae_pair_ultra_List_Hae_pair_triple_List)
-    if Hae_pair_ultra_List_Hae_pair_triple_List(i) == 0
+for i = 1: size(Hae_pair_diagonal_List_Hae_pair_List)
+    if Hae_pair_diagonal_List_Hae_pair_List(i) == 0
         n1 = n1 + 1;
-    elseif Hae_pair_ultra_List_Hae_pair_triple_List(i) > 0
+    elseif Hae_pair_diagonal_List_Hae_pair_List(i) > 0
         n2 = n2 + 1;
     else
         n3 = n3 + 1;
@@ -258,10 +258,10 @@ Hae_pair_diagonal_List_Hae_pair_List_compare(3) = n3;
 n1 = 0;
 n2 = 0;
 n3 = 0;
-for i = 1: size(Hae_pair_ultra_List_Hae_pair_triple_List)
-    if Hae_pair_ultra_List_Hae_pair_triple_List(i) == 0
+for i = 1: size(Hae_pair_diagonal_List_Hae_pair_dual_List)
+    if Hae_pair_diagonal_List_Hae_pair_dual_List(i) == 0
         n1 = n1 + 1;
-    elseif Hae_pair_ultra_List_Hae_pair_triple_List(i) > 0
+    elseif Hae_pair_diagonal_List_Hae_pair_dual_List(i) > 0
         n2 = n2 + 1;
     else
         n3 = n3 + 1;
@@ -275,10 +275,10 @@ Hae_pair_diagonal_List_Hae_pair_dual_List_compare(3) = n3;
 n1 = 0;
 n2 = 0;
 n3 = 0;
-for i = 1: size(Hae_pair_ultra_List_Hae_pair_triple_List)
-    if Hae_pair_ultra_List_Hae_pair_triple_List(i) == 0
+for i = 1: size(Hae_pair_diagonal_List_Hae_pair_triple_List)
+    if Hae_pair_diagonal_List_Hae_pair_triple_List(i) == 0
         n1 = n1 + 1;
-    elseif Hae_pair_ultra_List_Hae_pair_triple_List(i) > 0
+    elseif Hae_pair_diagonal_List_Hae_pair_triple_List(i) > 0
         n2 = n2 + 1;
     else
         n3 = n3 + 1;
@@ -292,10 +292,10 @@ Hae_pair_diagonal_List_Hae_pair_triple_List_compare(3) = n3;
 n1 = 0;
 n2 = 0;
 n3 = 0;
-for i = 1: size(Hae_pair_ultra_List_Hae_pair_triple_List)
-    if Hae_pair_ultra_List_Hae_pair_triple_List(i) == 0
+for i = 1: size(Hae_pair_diagonal_List_Hae_pair_ultra_List)
+    if Hae_pair_diagonal_List_Hae_pair_ultra_List(i) == 0
         n1 = n1 + 1;
-    elseif Hae_pair_ultra_List_Hae_pair_triple_List(i) > 0
+    elseif Hae_pair_diagonal_List_Hae_pair_ultra_List(i) > 0
         n2 = n2 + 1;
     else
         n3 = n3 + 1;
@@ -309,10 +309,10 @@ Hae_pair_diagonal_List_Hae_pair_ultra_List_compare(3) = n3;
 n1 = 0;
 n2 = 0;
 n3 = 0;
-for i = 1: size(Hae_pair_ultra_List_Hae_pair_triple_List)
-    if Hae_pair_ultra_List_Hae_pair_triple_List(i) == 0
+for i = 1: size(Hae_pair_diagonal_List_Hae_pair_crossDoubleLine_List)
+    if Hae_pair_diagonal_List_Hae_pair_crossDoubleLine_List(i) == 0
         n1 = n1 + 1;
-    elseif Hae_pair_ultra_List_Hae_pair_triple_List(i) > 0
+    elseif Hae_pair_diagonal_List_Hae_pair_crossDoubleLine_List(i) > 0
         n2 = n2 + 1;
     else
         n3 = n3 + 1;
@@ -326,10 +326,10 @@ Hae_pair_diagonal_List_Hae_pair_crossDoubleLine_List_compare(3) = n3;
 n1 = 0;
 n2 = 0;
 n3 = 0;
-for i = 1: size(Hae_pair_ultra_List_Hae_pair_triple_List)
-    if Hae_pair_ultra_List_Hae_pair_triple_List(i) == 0
+for i = 1: size(Hae_pair_crossDoubleLine_List_Hae_List)
+    if Hae_pair_crossDoubleLine_List_Hae_List(i) == 0
         n1 = n1 + 1;
-    elseif Hae_pair_ultra_List_Hae_pair_triple_List(i) > 0
+    elseif Hae_pair_crossDoubleLine_List_Hae_List(i) > 0
         n2 = n2 + 1;
     else
         n3 = n3 + 1;
@@ -343,10 +343,10 @@ Hae_pair_crossDoubleLine_List_Hae_List_compare(3) = n3;
 n1 = 0;
 n2 = 0;
 n3 = 0;
-for i = 1: size(Hae_pair_ultra_List_Hae_pair_triple_List)
-    if Hae_pair_ultra_List_Hae_pair_triple_List(i) == 0
+for i = 1: size(Hae_pair_crossDoubleLine_List_Hae_pair_List)
+    if Hae_pair_crossDoubleLine_List_Hae_pair_List(i) == 0
         n1 = n1 + 1;
-    elseif Hae_pair_ultra_List_Hae_pair_triple_List(i) > 0
+    elseif Hae_pair_crossDoubleLine_List_Hae_pair_List(i) > 0
         n2 = n2 + 1;
     else
         n3 = n3 + 1;
@@ -360,10 +360,10 @@ Hae_pair_crossDoubleLine_List_Hae_pair_List_compare(3) = n3;
 n1 = 0;
 n2 = 0;
 n3 = 0;
-for i = 1: size(Hae_pair_ultra_List_Hae_pair_triple_List)
-    if Hae_pair_ultra_List_Hae_pair_triple_List(i) == 0
+for i = 1: size(Hae_pair_crossDoubleLine_List_Hae_pair_dual_List)
+    if Hae_pair_crossDoubleLine_List_Hae_pair_dual_List(i) == 0
         n1 = n1 + 1;
-    elseif Hae_pair_ultra_List_Hae_pair_triple_List(i) > 0
+    elseif Hae_pair_crossDoubleLine_List_Hae_pair_dual_List(i) > 0
         n2 = n2 + 1;
     else
         n3 = n3 + 1;
@@ -377,10 +377,10 @@ Hae_pair_crossDoubleLine_List_Hae_pair_dual_List_compare(3) = n3;
 n1 = 0;
 n2 = 0;
 n3 = 0;
-for i = 1: size(Hae_pair_ultra_List_Hae_pair_triple_List)
-    if Hae_pair_ultra_List_Hae_pair_triple_List(i) == 0
+for i = 1: size(Hae_pair_crossDoubleLine_List_Hae_pair_triple_List)
+    if Hae_pair_crossDoubleLine_List_Hae_pair_triple_List(i) == 0
         n1 = n1 + 1;
-    elseif Hae_pair_ultra_List_Hae_pair_triple_List(i) > 0
+    elseif Hae_pair_crossDoubleLine_List_Hae_pair_triple_List(i) > 0
         n2 = n2 + 1;
     else
         n3 = n3 + 1;
@@ -394,10 +394,10 @@ Hae_pair_crossDoubleLine_List_Hae_pair_triple_List_compare(3) = n3;
 n1 = 0;
 n2 = 0;
 n3 = 0;
-for i = 1: size(Hae_pair_ultra_List_Hae_pair_triple_List)
-    if Hae_pair_ultra_List_Hae_pair_triple_List(i) == 0
+for i = 1: size(Hae_pair_crossDoubleLine_List_Hae_pair_ultra_List)
+    if Hae_pair_crossDoubleLine_List_Hae_pair_ultra_List(i) == 0
         n1 = n1 + 1;
-    elseif Hae_pair_ultra_List_Hae_pair_triple_List(i) > 0
+    elseif Hae_pair_crossDoubleLine_List_Hae_pair_ultra_List(i) > 0
         n2 = n2 + 1;
     else
         n3 = n3 + 1;

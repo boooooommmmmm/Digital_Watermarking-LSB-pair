@@ -42,7 +42,7 @@ SSIM_List_LSB_pair_crossDoubleLine = zeros(imageNum, 1);
 
 Image_List = cell(imageNum, 1);
 
-for i = 1: 10
+for i = 1: 100
     
     hostImage = imageList(i).name;
     index = strfind(hostImage, '.');                        %index is the digit+1 of image name. e.g 100=>4; 10=>3. First (index-1) stand for image name, the last stand for dot ".".
@@ -130,16 +130,13 @@ for i = 1: 10
     SSIM_pair_dual = SSIM(hostImg, watermarkedImg_pair_dual);
     SSIM_pair_triple = SSIM(hostImg, watermarkedImg_pair_triple);
     SSIM_pair_ultra = SSIM(hostImg, watermarkedImg_pair_ultra);
-    SSIM_pair_diagonal = SSIM(hostImg, watermarkedImg_pair_ultra);
-    SSIM_pair_crossDoubleLine = SSIM(hostImg, watermarkedImg_pair_ultra);
     
     SSIM_List_LSB(i) = SSIM1;
     SSIM_List_LSB_pair(i) = SSIM_pair;
     SSIM_List_LSB_pair_dual(i) = SSIM_pair_dual;
     SSIM_List_LSB_pair_triple(i) = SSIM_pair_triple;
     SSIM_List_LSB_pair_ultra(i) = SSIM_pair_ultra;
-    SSIM_List_LSB_pair_diagonal(i) = SSIM_pair_diagonal;
-    SSIM_List_LSB_pair_crossDoubleLine(i) = SSIM_pair_crossDoubleLine;
+    SSIM_List_LSB_pair_crossDoubleLine(i) = 
     
     fprintf('Processing... (%d of %d) has been done...\n', i,imageNum);
 end
@@ -172,7 +169,7 @@ xlswrite('Hae.xlsx', Sheet2_3, 'Sheet2', 'A4');
 xlswrite('Hae.xlsx', Hae_compare_result_List, 'Sheet2', 'B2');
 
 
-[SSIM_header_Sheet1, SSIM_result_List, SSIM_header_Sheet2, SSIM_compare_result_List] = CompareSSIM(SSIM_List_LSB, SSIM_List_LSB_pair, SSIM_List_LSB_pair_dual, SSIM_List_LSB_pair_triple,SSIM_List_LSB_pair_ultra,SSIM_List_LSB_pair_diagonal,SSIM_List_LSB_pair_crossDoubleLine);
+[SSIM_header_Sheet1, SSIM_result_List, SSIM_header_Sheet2, SSIM_compare_result_List] = CompareSSIM(SSIM_List_LSB, SSIM_List_LSB_pair, SSIM_List_LSB_pair_dual, SSIM_List_LSB_pair_triple,SSIM_List_LSB_pair_ultra);
 xlswrite('SSIM.xlsx', SSIM_header_Sheet1);
 xlswrite('SSIM.xlsx', Image_List, 'Sheet1', 'A2');
 xlswrite('SSIM.xlsx', SSIM_result_List, 'Sheet1', 'B2');
