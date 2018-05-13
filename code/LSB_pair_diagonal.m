@@ -34,14 +34,14 @@ distortion = zeros(1, 256); % distortion
 n0 = 0; % number of 0 in binary watermark
 n1 = 0; % number of 1 in binary watermark
 k = 0;
-isSupport_next_row_n = true;
+isSupport_next_diagonal_n = true;
 pair = false;
 cross_pair = false;
 
 for i = 1:H_binWatermark
     for j = 1:W_binWatermark
         n = str2double(binWatermark(i, j)); % get the bit from watermark
-        isSupport_next_row_n = true;
+        isSupport_next_diagonal_n = true;
         cross_pair = false;
         
         if pair == true
@@ -134,51 +134,63 @@ for i = 1:H_binWatermark
                 end
             end % end c==W condiction
             
-            % start cross row pair detector
-            if pair == false && r~= H
-                next_row_pixel = double(watermarkedImg(r + 1, c));
-                if mod(pixel, 2) == 1 && next_row_pixel == pixel + 1
-                    row_change = fix((j + W)/W_binWatermark);
+            % start diagonal pair detector
+            if pair == false && r~= H 
+                if c == W && r~=H - 1
+                    next_diagonal_pixel = double(watermarkedImg(r + 2, 1));
+                else
+                    next_diagonal_pixel = double(watermarkedImg(r + 1, c + 1));
+                end
+                if mod(pixel, 2) == 1 && next_diagonal_pixel == pixel + 1
+                    row_change = fix((j + W + 1)/W_binWatermark);
                     if (i + row_change) > H_binWatermark
-                        isSupport_next_row_n = false;
-                    elseif mod((j + W), W_binWatermark) == 0
-                        next_row_n = str2double(binWatermark((i + row_change -  1), W_binWatermark));
+                        isSupport_next_diagonal_n = false;
+                    elseif mod((j + W + 1), W_binWatermark) == 0
+                        next_diagonal_n = str2double(binWatermark((i + row_change -  1), W_binWatermark));
                     else
-                        next_row_n = str2double(binWatermark((i + row_change), j + W - row_change*W_binWatermark));
+                        next_diagonal_n = str2double(binWatermark((i + row_change), j + W + 1 - row_change*W_binWatermark));
                     end
                     
-                    if isSupport_next_row_n == true
-                        if next_row_n ~= mod(next_row_pixel, 2)
+                    if isSupport_next_diagonal_n == true
+                        if next_diagonal_n ~= mod(next_diagonal_pixel, 2)
                             temp_dist = distortion;
                             temp_dist(pixel) = temp_dist(pixel) + 1;
                             temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
                             temp_dist(pixel + 2) = temp_dist(pixel) - 1;
                             temp_dist(pixel + 3) = temp_dist(pixel) + 1;
                             if sum(abs(temp_dist)) >= sum(abs(distortion))
-                                watermarkedImg(r, c) = next_row_pixel;
-                                watermarkedImg(r + 1, c) = pixel;
+                                watermarkedImg(r, c) = next_diagonal_pixel;
+                                if c == W
+                                    watermarkedImg(r + 2, 1) = pixel;
+                                else
+                                    watermarkedImg(r + 1, c + 1) = pixel;
+                                end                                
                                 cross_pair = true;
                             end
                         end
                     end
-                elseif mod(pixel, 2) == 0 && next_row_pixel == pixel - 1
-                    row_change = fix((j + W)/W_binWatermark);
+                elseif mod(pixel, 2) == 0 && next_diagonal_pixel == pixel - 1
+                    row_change = fix((j + W + 1)/W_binWatermark);
                     if (i + row_change) > H_binWatermark
-                        isSupport_next_row_n = false;
-                    elseif mod((j + W), W_binWatermark) == 0
-                        next_row_n = str2double(binWatermark((i + row_change -  1), W_binWatermark));
+                        isSupport_next_diagonal_n = false;
+                    elseif mod((j + W + 1), W_binWatermark) == 0
+                        next_diagonal_n = str2double(binWatermark((i + row_change -  1), W_binWatermark));
                     else
-                        next_row_n = str2double(binWatermark((i + row_change), j + W - row_change*W_binWatermark));
+                        next_diagonal_n = str2double(binWatermark((i + row_change), j + W + 1 - row_change*W_binWatermark));
                     end
                     
-                    if isSupport_next_row_n == true
-                        if next_row_n ~= mod(next_row_pixel, 2)
+                    if isSupport_next_diagonal_n == true
+                        if next_diagonal_n ~= mod(next_diagonal_pixel, 2)
                             temp_dist = distortion;
                             temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
                             temp_dist(pixel + 2) = temp_dist(pixel + 2) + 1;
                             if sum(abs(temp_dist)) >= sum(abs(distortion))
-                                watermarkedImg(r, c) = next_row_pixel;
-                                watermarkedImg(r + 1, c) = pixel;
+                                watermarkedImg(r, c) = next_diagonal_pixel;
+                                if c == W
+                                    watermarkedImg(r + 2, 1) = pixel;
+                                else
+                                    watermarkedImg(r + 1, c + 1) = pixel;
+                                end    
                                 cross_pair = true;
                             end
                         end
