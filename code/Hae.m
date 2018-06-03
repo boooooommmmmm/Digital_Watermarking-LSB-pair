@@ -1,3 +1,7 @@
+%=========================================================================
+%===============This function is for calculating Hae value================
+%=========================================================================
+
 function [h] = Hae(hostImg, watermarkedImg)
 %HAE Summary of this function goes here
 %   Detailed explanation goes here

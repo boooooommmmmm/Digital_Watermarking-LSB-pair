@@ -1,0 +1,22 @@
+%*******************************************************************************
+%****************************** Second Chapter *********************************
+%*******************************************************************************
+
+\chapter{Existing work}
+
+\ifpdf
+    \graphicspath{image/}
+\fi
+
+
+% \section{\label{sec:level1}Existing work}
+
+One of the earliest study on digital image watermarking technology was conducted by Tirkel ~\cite{tirkel1993electronic}. He proposes two methods to hide information, both based on changing the carrier image pixel value of Least Significant Bit (LSB). Preceding this paper was a study by Kurah and McHughes, who put forward the idea of \textit{image downgrading} to embed the information into the last bit of pixel in 1992 ~\cite{kurak1992cautionary}. 
+
+Abdullah Bamatraf \textit{et al.} in their paper “A New Digital Watermarking Algorithm Using Combination of Least Significant Bit (LSB) and Inverse Bit” proposes a new LSB method. This method can provide better Peak Signal-to-Noise Ratio (PSNR) value by inverting embed message bits and shifting the order of carrier image pixels ~\cite{bamatraf2011new}. Jessica J Fridrich \textit{et al.} point out the similar idea that the imbalanced distribution of embedding distortion is vulnerable to steganalysis ~\cite{fridrich2001detecting}.
+
+Andrew Ker in his paper “Steganography using multiple-base notational system and human vision sensitivity” points out that the original digital watermarking LSB replacement existing an imbalance of embedding distortion when embedding message into the image. Due to the existence of this imbalance, the LSB can be easily detected ~\cite{ker2004improved}. 
+
+In 2006, Jarno Mielikainen in his paper “LSB matching revisited” mentioned a new embedding algorithm to find a pair of pixels. In his algorithm, two pixels are grouped as a unit, and LSB embedding is done per unit. When storing the same amount of information, this method results in less distortion to the cover image. He also shows that the resistance of watermarking detection can be increased, with the help of reducing image distortion ~\cite{mielikainen2006lsb}. Xinpeng Zhang et al improved Mielikainen’s methods by using exploiting modification direction (EMD) in the same year ~\cite{zhang2006efficient}.
+
+Wien Hong \textit{et al.} in their paper proposes a new method based on pixel pair matching (PPM). This method uses the value of pixels to find a pair pixel in its neighbourhood according to the embedded message bit. His adaptive pixel pair matching (APPM) method offers lower distortion than optimal pixel adjustment process (OPAP) and regular PPM methods for various payloads ~\cite{hong2012novel}.

@@ -4,6 +4,10 @@
 %===============================================================
 
 function [ H_binWatermark, W_binWatermark ] = LSB_pair_triple(hostFileName, watermarkFileName, watermarkedImgFileName)
+%   Summary of this function
+%   Detailed explanation goes here
+%   This methods is trying to find pixel pairs between adjacent pixels and
+%   the fist pixel with its the one after next pixel
 
 
 % read host image

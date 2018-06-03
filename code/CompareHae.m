@@ -1,3 +1,7 @@
+%=========================================================================
+%=============This function is for comaring Hae difference================
+%=========================================================================
+
 function [Hae_header_Sheet1, Hae_result_List, Hae_header_Sheet2, Hae_compare_result_List] = CompareHae(Hae_List, Hae_pair_List, Hae_pair_dual_List, Hae_pair_triple_List,Hae_pair_ultra_List, Hae_pair_diagonal_List, Hae_pair_crossDoubleLine_List)
 
 Hae_pair_List_Hae_List_compare = zeros(3, 1);

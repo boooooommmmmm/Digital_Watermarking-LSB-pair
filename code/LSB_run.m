@@ -51,7 +51,7 @@ SSIM_List_LSB_pair_crossDoubleLine = zeros(imageNum, 1);
 Image_List = cell(imageNum, 1);
 
 %Start embedding and extracting loop
-for i = 1: imageNum
+for i = 1: 5
     
     hostImage = imageList(i).name;                          %read the whole image names from list
     index = strfind(hostImage, '.');                        %index is the digit+1 of image name. e.g. 100=>4; 10=>3. First (index-1) bytes stand for image name, the last byte stand for dot ".".

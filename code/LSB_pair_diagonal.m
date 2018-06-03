@@ -4,8 +4,10 @@
 %=========================================================================
 
 function [ H_binWatermark, W_binWatermark ] = LSB_pair_diagonal( hostFileName,watermarkFileName, watermarkedImgFileName )
-%LSB_pair_diagonal Summary of this function goes here
+%   Summary of this function
 %   Detailed explanation goes here
+%   This methods is trying to find pixel pairs between adjacent pixels and
+%   the fist pixel with its diagonal pixel
 
 % read host image
 hostImg = imread(hostFileName);

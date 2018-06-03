@@ -4,8 +4,10 @@
 %=========================================================================
 
 function [ H_binWatermark, W_binWatermark ] = LSB_pair_crossDoubleLine( hostFileName,watermarkFileName, watermarkedImgFileName )
-%crossDoubleLine Summary of this function goes here
+%   Summary of this function
 %   Detailed explanation goes here
+%   This methods is trying to find pixel pairs between adjacent pixels and
+%   the fist pixel with its the one after next row pixel
 
 % read host image
 hostImg = imread(hostFileName);

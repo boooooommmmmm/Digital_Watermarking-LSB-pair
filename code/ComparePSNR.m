@@ -1,3 +1,7 @@
+%=========================================================================
+%============This function is for comaring PSNR difference================
+%=========================================================================
+
 function [PSNR_header_Sheet1, PSNR_result_List, PSNR_header_Sheet2, PSNR_compare_result_List] = ComparePSNR(PSNR_List, PSNR_pair_List, PSNR_pair_dual_List, PSNR_pair_triple_List,PSNR_pair_ultra_List,PSNR_pair_diagonal_List,PSNR_pair_crossDoubleLine_List)
 
 

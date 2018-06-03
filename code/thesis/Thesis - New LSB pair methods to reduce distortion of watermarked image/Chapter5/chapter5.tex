@@ -1,0 +1,19 @@
+%*******************************************************************************
+%****************************** Fifth Chapter *********************************
+%*******************************************************************************
+
+\chapter{Conclusion and Future Work}
+
+\ifpdf
+    \graphicspath{image/}
+\fi
+
+
+
+%\section{\label{sec:level1}Conclusion and Future Work}
+
+This thesis proposes a new LSB replacement method called LSB-pair to increase the security of hiding information in digital watermarking technique. This method can reduce watermarked image distortion by finding pixel pairs and swap their values to improve the security of watermarked information. The experiment results show that compared with the original LSB replacement method, LSB-pair can reduce watermarked image distortion but in a very little improvement. Therefore, we designed three extension methods which have better distortion reduction by extending the range of the pixel finding. In order to evaluate each method's performance on distortion reduction, our experiment utilised three image quality measurement approaches: Peak signal-to-noise ratio (PSNR), Histogram absolute error (Hae) and Structural similarity index measure (SSIM).  
+
+The three extension LSB-pair methods we have proposed are: LSB-crossLine-pair, LSB-triple-pair and LSB-combine-pair. Compared with original LSB replacement method, all these methods have the same PSNR result, better Hae result and worse SSIM result. For Hae, LSB-crossline-pair have better performance than LSB-triple-pair. Besides, LSB-combine-pair is better than both LSB-crossLine-pair and LSB-triple-pair. From this discovery, we draw a conclusion that we can improve performance on watermarked image distortion by combining multiple LSB-pair methods together. As for SSIM, the original LSB replacement has the best value and LSB-extension is the worst. Although the differences between each method are insignificant, this experiment result hints that we cannot extend the application range or combine multiple LSB-pair methods arbitrarily in order to have better distortion reduction. At the end of our evaluation, we indicated two existing shortcomings of our methods: lack of global view, and incomplete pixel pair detection.
+
+Future work includes fixing two vulnerabilities we had mentioned, and there is a demand to find a balanced point between SSIM performance and distortion reduction when combining various extension of LSB-pair methods to lower distortion. One additional work is that, these methods should be able to embed messages into colour images, where we need to consider three vectors (RGB) for each pixel instead of only one (gray level).

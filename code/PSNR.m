@@ -1,3 +1,7 @@
+%=========================================================================
+%==============This function is for calculating PSNR value================
+%=========================================================================
+
 function [ psnr ] = PSNR( image1, image2 )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here

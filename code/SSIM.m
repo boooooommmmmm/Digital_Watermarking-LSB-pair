@@ -1,3 +1,7 @@
+%=========================================================================
+%==============This function is for calculating SSIM value================
+%=========================================================================
+
 function mssim=SSIM(frameReference,frameUnderTest)
 %Written by: Mahmoud Afifi ~ Assiut University, Egypt
 %Reference: Z. Wang, A. C. Bovik, H. R. Sheikh and E. P. Simoncelli,

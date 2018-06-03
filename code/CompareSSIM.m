@@ -1,3 +1,7 @@
+%=========================================================================
+%============This function is for comaring SSIM difference================
+%=========================================================================
+
 function [SSIM_header_Sheet1, SSIM_result_List, SSIM_header_Sheet2, SSIM_compare_result_List] = CompareSSIM(SSIM_List, SSIM_pair_List, SSIM_pair_dual_List, SSIM_pair_triple_List,SSIM_pair_ultra_List, SSIM_pair_diagonal_List, SSIM_pair_crossDoubleLine_List)
 
 SSIM_pair_List_SSIM_List_compare = zeros(3, 1);
