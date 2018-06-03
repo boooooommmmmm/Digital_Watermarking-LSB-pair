@@ -1,3 +1,8 @@
+%=========================================================================
+%=============This is the LSB_pair_diagonal function======================
+%===============The same as LSB-diagonal-pair in the thesis===============
+%=========================================================================
+
 function [ H_binWatermark, W_binWatermark ] = LSB_pair_diagonal( hostFileName,watermarkFileName, watermarkedImgFileName )
 %LSB_pair_diagonal Summary of this function goes here
 %   Detailed explanation goes here

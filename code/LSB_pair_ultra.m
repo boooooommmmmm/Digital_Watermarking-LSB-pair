@@ -1,3 +1,8 @@
+%===============================================================
+%==========This is the LSB_pair_ultra function==================
+%==========The same as LSB-combine-pair in the thesis===========
+%===============================================================
+
 function [ H_binWatermark, W_binWatermark ] = LSB_pair_ultra( hostFileName,watermarkFileName, watermarkedImgFileName )
 %This function combines LSB_pair_dual and LSB_pair_triple together. The
 %priority of LSB_pair_dual is higher than LSB_pair_triple.

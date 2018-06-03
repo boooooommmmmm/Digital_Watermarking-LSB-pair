@@ -1,3 +1,8 @@
+%=========================================================================
+%==========This is the LSB_pair_crossDoubleLine function==================
+%==========The same as LSB-crossDoubleLine-pair in the thesis=============
+%=========================================================================
+
 function [ H_binWatermark, W_binWatermark ] = LSB_pair_crossDoubleLine( hostFileName,watermarkFileName, watermarkedImgFileName )
 %crossDoubleLine Summary of this function goes here
 %   Detailed explanation goes here

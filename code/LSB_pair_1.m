@@ -161,7 +161,7 @@ for i = 1:H_binWatermark
                     distortion(pixel + 1) = distortion(pixel + 1) - 1;
                     distortion(pixel + 2) = distortion(pixel + 2) + 1;
                 end
-                watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);
+                watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);       %change least bit----------->
             end
         end
         

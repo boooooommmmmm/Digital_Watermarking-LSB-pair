@@ -1,3 +1,5 @@
+%===================Warning: This function has been abandoned==============
+
 function [ H_binWatermark, W_binWatermark ] = LSB_pair_new(hostFileName, watermarkFileName, watermarkedImgFileName )
 %LSB_PIAR Summary of this function goes here
 
