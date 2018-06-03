@@ -1,5 +1,11 @@
-function [ H_binWatermark, W_binWatermark ] = LSB_pair(hostFileName, watermarkFileName, watermarkedImgFileName )
-%LSB_PIAR Summary of this function goes here
+%===============================================================
+%==========This is the LSB_pair_dual function===================
+%=========The same as LSB-corssLine-pair in the thesis==========
+%===============================================================
+
+function [ H_binWatermark, W_binWatermark ] = LSB_pair_1( hostFileName,watermarkFileName, watermarkedImgFileName )
+%LSB_PAIR_1 Summary of this function goes here
+%   Detailed explanation goes here
 
 % read host image
 hostImg = imread(hostFileName);
@@ -29,7 +35,7 @@ end
 r = 1; % row
 c = 1; % column
 watermarkedImg = hostImg;
-
+distortion = zeros(1, 256); % distortion
 n0 = 0; % number of 0 in binary watermark
 n1 = 0; % number of 1 in binary watermark
 k = 0;
@@ -43,13 +49,11 @@ for i = 1:H_binWatermark
         else
             n1 = n1 + 1;
         end
-%         if c == 33
-%             fprintf('end of a row');
-%         end
+        
         if flag == true
             flag = false;
             c = c + 1; % move to next pixel
-            % this is the last pixel of this column
+            % this is the last pixel of this row
             if c > W
                 r = r + 1; % move to next row
                 c = 1; % column reseted
@@ -59,42 +63,49 @@ for i = 1:H_binWatermark
         
         % change happens
         if n ~= bitget(watermarkedImg(r, c), 1)
-             if i == H_binWatermark && j == W_binWatermark
-                 watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);
-                 continue;%end iteration
-             end
+            if i == H_binWatermark && j == W_binWatermark
+                watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);
+                continue;
+            end
             pair = false;
             pixel = double(watermarkedImg(r, c)); % the gray level of current pixel
-            
-            %if current column is the last one
             if c == W
                 next_pixel = double(watermarkedImg(r + 1, 1));
-                if mod(pixel, 2) == 1 && next_pixel == pixel + 1%if LSB current pixel=1 and the next pixel of gray level is 1 bit larger than current
-                    %check if is last column or not
-                    if j == W_binWatermark
-                        next_n = str2double(binWatermark(i + 1, 1));
-                    else
-                        next_n = str2double(binWatermark(i, j + 1));
-                    end
-                    if next_n ~= mod(next_pixel, 2)%if message bit != LSB(pixel), exchange two pixels
-                        watermarkedImg(r, c) = next_pixel;
-                        watermarkedImg(r + 1, 1) = pixel;
-                        pair = true;
-                    end
-                elseif mod(pixel, 2) == 0 && next_pixel == pixel - 1%the second case, 
+                if mod(pixel, 2) == 1 && next_pixel == pixel + 1
                     if j == W_binWatermark
                         next_n = str2double(binWatermark(i + 1, 1));
                     else
                         next_n = str2double(binWatermark(i, j + 1));
                     end
                     if next_n ~= mod(next_pixel, 2)
-                        watermarkedImg(r, c) = next_pixel;
-                        watermarkedImg(r + 1, 1) = pixel;
-                        pair = true;
+                        temp_dist = distortion;
+                        temp_dist(pixel) = temp_dist(pixel) + 1;
+                        temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
+                        temp_dist(pixel + 2) = temp_dist(pixel) - 1;
+                        temp_dist(pixel + 3) = temp_dist(pixel) + 1;
+                        if sum(abs(temp_dist)) >= sum(abs(distortion))
+                            watermarkedImg(r, c) = next_pixel;
+                            watermarkedImg(r + 1, 1) = pixel;
+                            pair = true;
+                        end
+                    end
+                elseif mod(pixel, 2) == 0 && next_pixel == pixel - 1
+                    if j == W_binWatermark
+                        next_n = str2double(binWatermark(i + 1, 1));
+                    else
+                        next_n = str2double(binWatermark(i, j + 1));
+                    end
+                    if next_n ~= mod(next_pixel, 2)
+                        temp_dist = distortion;
+                        temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
+                        temp_dist(pixel + 2) = temp_dist(pixel + 2) + 1;
+                        if sum(abs(temp_dist)) >= sum(abs(distortion))
+                            watermarkedImg(r, c) = next_pixel;
+                            watermarkedImg(r + 1, 1) = pixel;
+                            pair = true;
+                        end
                     end
                 end
-                
-            %if normal case
             else
                 next_pixel = double(watermarkedImg(r, c + 1));
                 if mod(pixel, 2) == 1 && next_pixel == pixel + 1
@@ -104,9 +115,16 @@ for i = 1:H_binWatermark
                         next_n = str2double(binWatermark(i, j + 1));
                     end
                     if next_n ~= mod(next_pixel, 2)
-                        watermarkedImg(r, c) = next_pixel;
-                        watermarkedImg(r, c + 1) = pixel;
-                        pair = true;
+                        temp_dist = distortion;
+                        temp_dist(pixel) = temp_dist(pixel) + 1;
+                        temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
+                        temp_dist(pixel + 2) = temp_dist(pixel) - 1;
+                        temp_dist(pixel + 3) = temp_dist(pixel) + 1;
+                        if sum(abs(temp_dist)) >= sum(abs(distortion))
+                            watermarkedImg(r, c) = next_pixel;
+                            watermarkedImg(r, c + 1) = pixel;
+                            pair = true;
+                        end
                     end
                 elseif mod(pixel, 2) == 0 && next_pixel == pixel - 1
                     if j == W_binWatermark
@@ -115,12 +133,18 @@ for i = 1:H_binWatermark
                         next_n = str2double(binWatermark(i, j + 1));
                     end
                     if next_n ~= mod(next_pixel, 2)
-                        watermarkedImg(r, c) = next_pixel;
-                        watermarkedImg(r, c + 1) = pixel;
-                        pair = true;
+                        temp_dist = distortion;
+                        temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
+                        temp_dist(pixel + 2) = temp_dist(pixel + 2) + 1;
+                        if sum(abs(temp_dist)) >= sum(abs(distortion))
+                            watermarkedImg(r, c) = next_pixel;
+                            watermarkedImg(r, c + 1) = pixel;
+                            pair = true;
+                        end
                     end
                 end
             end
+            
             if pair == true
                 if mod(pixel, 2) == 1 && next_pixel == pixel + 1
                     k = k + 1;
@@ -128,15 +152,20 @@ for i = 1:H_binWatermark
                     k = k + 1;
                 end
                 flag = true;
-                
-            % if not fit any suitation, do regular LSB watermarking
             else
+                if mod(pixel, 2) == 1
+                    distortion(pixel + 1) = distortion(pixel + 1) - 1;
+                    distortion(pixel) = distortion(pixel) + 1;
+                else
+                    distortion(pixel + 1) = distortion(pixel + 1) - 1;
+                    distortion(pixel + 2) = distortion(pixel + 2) + 1;
+                end
                 watermarkedImg(r, c) = bitset(watermarkedImg(r, c),1, n);
             end
         end
-
+        
         c = c + 1; % move to next pixel
-
+        
         % this is the last pixel of this row
         if c > W
             r = r + 1; % move to next row
@@ -152,6 +181,15 @@ end
 % output the watermarked image
 imwrite(watermarkedImg, watermarkedImgFileName, 'png');
 
+
+% show the host image and watermarked image
+% figure(1);
+% subplot(1, 2, 1);
+% imshow(watermarkedImg, []);
+% title('Watermarked image pair');
+% subplot(1, 2, 2);
+% imshow(hostImg, []);
+% title('Host image');
 
 end
 

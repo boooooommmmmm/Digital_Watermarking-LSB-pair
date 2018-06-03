@@ -1,5 +1,10 @@
+%===============================================================
+%==========This is the LSB_pair_dual function===================
+%=========The same as LSB-corssLine-pair in the thesis==========
+%===============================================================
+
 function [ H_binWatermark, W_binWatermark ] = LSB_pair_triple(hostFileName, watermarkFileName, watermarkedImgFileName)
-%LSB_PIAR Summary of this function goes here
+
 
 % read host image
 hostImg = imread(hostFileName);

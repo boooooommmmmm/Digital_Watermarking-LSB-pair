@@ -1,6 +1,14 @@
+%===============================================================
+%==========This is the LSB_pair_dual function===================
+%=========The same as LSB-corssLine-pair in the thesis==========
+%===============================================================
+
 function [ H_binWatermark, W_binWatermark ] = LSB_pair_dual( hostFileName,watermarkFileName, watermarkedImgFileName )
-%LSB_PAIR_1 Summary of this function goes here
+%   Summary of this function
 %   Detailed explanation goes here
+%   This methods is trying to find pixel pairs between adjacent pixels and
+%   the fist pixel with its next row pixel
+
 
 % read host image
 hostImg = imread(hostFileName);
@@ -34,7 +42,9 @@ distortion = zeros(1, 256); % distortion
 n0 = 0; % number of 0 in binary watermark
 n1 = 0; % number of 1 in binary watermark
 k = 0;
-isSupport_next_row_n = true;
+
+% flags
+isSupport_next_row_n = true; 
 pair = false;
 cross_pair = false;
 
@@ -65,7 +75,7 @@ for i = 1:H_binWatermark
         
         % LSB starts here
         if n ~= bitget(watermarkedImg(r, c), 1)
-            if c == W
+            if c == W %when current pixel is the last pixel in row 
                 next_pixel = double(watermarkedImg(r + 1, 1));
                 if j == W_binWatermark
                     next_n = str2double(binWatermark(i + 1, 1));
@@ -73,9 +83,9 @@ for i = 1:H_binWatermark
                     next_n = str2double(binWatermark(i, j + 1));
                 end
                 
-                if mod(pixel, 2) == 1 && next_pixel == pixel + 1
+                if mod(pixel, 2) == 1 && next_pixel == pixel + 1            %first situation when distortion change is not 0
                     if next_n ~= mod(next_pixel, 2)
-                        temp_dist = distortion;
+                        temp_dist = distortion;                             %in this case, distiortion changes will influence four elements
                         temp_dist(pixel) = temp_dist(pixel) + 1;
                         temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
                         temp_dist(pixel + 2) = temp_dist(pixel) - 1;
@@ -86,7 +96,7 @@ for i = 1:H_binWatermark
                             pair = true;
                         end
                     end
-                elseif mod(pixel, 2) == 0 && next_pixel == pixel - 1
+                elseif mod(pixel, 2) == 0 && next_pixel == pixel - 1        %second situation when distortion change is not 0
                     if next_n ~= mod(next_pixel, 2)
                         temp_dist = distortion;
                         temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
@@ -132,7 +142,7 @@ for i = 1:H_binWatermark
                         end
                     end
                 end
-            end % end c==W condiction
+            end % end c==W condition
             
             % start cross row pair detector
             if pair == false && r~= H

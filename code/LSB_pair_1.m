@@ -1,6 +1,12 @@
+%====================================================================
+%=====================This is the LSB function=======================
+%=========The same as regular LSB replacement in the thesis==========
+%====================================================================
+
 function [ H_binWatermark, W_binWatermark ] = LSB_pair_1( hostFileName,watermarkFileName, watermarkedImgFileName )
-%LSB_PAIR_1 Summary of this function goes here
-%   Detailed explanation goes here
+%   LSB_PAIR_1 Summary of this function goes here
+%   Replace pixel's least bit with corresponding messages bit
+
 
 % read host image
 hostImg = imread(hostFileName);
@@ -66,13 +72,13 @@ for i = 1:H_binWatermark
             pixel = double(watermarkedImg(r, c)); % the gray level of current pixel
             if c == W
                 next_pixel = double(watermarkedImg(r + 1, 1));
-                if mod(pixel, 2) == 1 && next_pixel == pixel + 1
+                if mod(pixel, 2) == 1 && next_pixel == pixel + 1    %first situation when distortion change is not 0
                     if j == W_binWatermark
                         next_n = str2double(binWatermark(i + 1, 1));
                     else
                         next_n = str2double(binWatermark(i, j + 1));
                     end
-                    if next_n ~= mod(next_pixel, 2)
+                    if next_n ~= mod(next_pixel, 2)                 %in this case, distiortion changes will influence four elements
                         temp_dist = distortion;
                         temp_dist(pixel) = temp_dist(pixel) + 1;
                         temp_dist(pixel + 1) = temp_dist(pixel + 1) - 1;
@@ -84,7 +90,7 @@ for i = 1:H_binWatermark
                             pair = true;
                         end
                     end
-                elseif mod(pixel, 2) == 0 && next_pixel == pixel - 1
+                elseif mod(pixel, 2) == 0 && next_pixel == pixel - 1    %second situation when distortion change is not 0
                     if j == W_binWatermark
                         next_n = str2double(binWatermark(i + 1, 1));
                     else
@@ -101,7 +107,7 @@ for i = 1:H_binWatermark
                         end
                     end
                 end
-            else
+            else % in normal cases
                 next_pixel = double(watermarkedImg(r, c + 1));
                 if mod(pixel, 2) == 1 && next_pixel == pixel + 1
                     if j  == W_binWatermark

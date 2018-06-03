@@ -1,3 +1,5 @@
+% Warning: This function has been abandoned
+
 function [] = LSB_extract_new(extractImg, extractFile)
 
 watermarkedImg = imread(extractImg);
