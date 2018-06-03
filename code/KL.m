@@ -1,3 +1,5 @@
+%========This function is to evaluate KL value, it has been abandoned======
+
 function [ D ] = KL( hostImg, watermarkedImg )
 %KL Summary of this function goes here
 %   Detailed explanation goes here
