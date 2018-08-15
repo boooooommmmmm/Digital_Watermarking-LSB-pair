@@ -57,13 +57,51 @@ After finishing watermarking, the following measurement methods will be used to 
 
 
 
-### Knowledge based 
+### Knowledge based
 
 
 
 ### Result & Evaluation
 
+For this algorithm, we used three image quality measurement functions to test it. `PSNR`, `SSIM` and `Hae`. The detailed results are listing:
 
+PSNR
+
+![psnr](pic/psnr_table.png)
+
+SSIM
+
+![](pic/ssim_table.png)
+
+Hae
+
+![](pic/Hae_table.png)
+
+<br />
+
+**PSNR**
+
+![PSNR](pic/PSNR.PNG)
+
+**SSIM**
+
+![SSIM](pic/SSIM.PNG)
+
+**Hae**
+
+![Hae](pic/Hae.PNG)
+
+<br />
+
+<br />
+
+#### Compare
+
+
+
+
+
+![LSB-crossDoubleLine-pair](pic/LSB-crossDoubleLine-pair.PNG)
 
 ### Future work
 
